@@ -27,4 +27,3 @@ flutter:
 
   assets:
     - assets/events_api_response.json
-    - assets/events.json
