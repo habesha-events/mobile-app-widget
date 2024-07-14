@@ -1,17 +1,18 @@
 import 'dart:convert';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
 class ApiService {
   static const String baseUrl = 'https://your-api-url.com';
-  static const bool useFakeData = true;
+  static const bool useFakeData = kDebugMode;
 
   Future<List<dynamic>> getEvents(String city) async {
     if (useFakeData) {
       return _loadFakeData();
     } else {
-      final response = await http.get(Uri.parse('\$baseUrl/get_events?location_city=\$city'));
-
+      final response = await http.get(Uri.parse('$baseUrl/get_events?location_city=$city'));
+      print("ApiService: statusCode ${response.statusCode}");
       if (response.statusCode == 200) {
         return json.decode(response.body);
       } else {
@@ -21,8 +22,8 @@ class ApiService {
   }
 
   Future<List<dynamic>> _loadFakeData() async {
+    print("ApiService: loadFakeData");
     final response = await rootBundle.loadString('assets/events_api_response.json');
-    print("_loadFakeData: jsonResponse: $response");
     return json.decode(response);
   }
 }

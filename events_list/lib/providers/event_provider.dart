@@ -25,12 +25,14 @@ class EventProvider with ChangeNotifier {
       if (cachedEvents != null) {
         _events = cachedEvents.map((e) => Event.fromJson(e)).toList();
       } else {
+        // cache has expired or empty, go fetch from api
         final response = await _apiService.getEvents(city);
         _events = response.map((e) => Event.fromJson(e)).toList();
         await _cacheService.cacheEvents(city, response);
       }
+      print("EventProvider: providing ${_events.length} events");
     } catch (error) {
-      print("fetchEvents: city: $city error:$error");
+      print("EventProvider: error:$error city: $city");
       _events = [];
     }
 

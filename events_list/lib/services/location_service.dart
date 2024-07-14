@@ -8,6 +8,8 @@ class LocationService {
     loc.PermissionStatus _permissionGranted;
     loc.LocationData _locationData;
 
+    print("LocationService: getCityName: 1");
+
     _serviceEnabled = await location.serviceEnabled();
     if (!_serviceEnabled) {
       _serviceEnabled = await location.requestService();
@@ -16,6 +18,8 @@ class LocationService {
       }
     }
 
+    print("LocationService: getCityName: 2: _serviceEnabled ${_serviceEnabled}");
+
     _permissionGranted = await location.hasPermission();
     if (_permissionGranted == loc.PermissionStatus.denied) {
       _permissionGranted = await location.requestPermission();
@@ -23,6 +27,7 @@ class LocationService {
         return Future.error('Location permissions are denied');
       }
     }
+    print("LocationService: getCityName: 3: _permissionGranted ${_permissionGranted}");
 
     _locationData = await location.getLocation();
     List<Placemark> placemarks = await placemarkFromCoordinates(
