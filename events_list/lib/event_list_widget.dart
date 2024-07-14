@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'providers/event_provider.dart';
 
 class EventListWidget extends StatelessWidget {
@@ -63,11 +64,24 @@ class EventListWidget extends StatelessWidget {
                 title: Text(event.title),
                 subtitle: Text('${event.startTime}\n${event.price}'),
                 isThreeLine: true,
+                onTap: (){
+                  _launchURL(event.eventUrl);
+                },
               );
             },
           );
         },
       ),
     );
+  }
+
+
+  void _launchURL(url) async {
+    final Uri uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $uri $url';
+    }
   }
 }
