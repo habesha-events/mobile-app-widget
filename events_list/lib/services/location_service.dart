@@ -30,8 +30,12 @@ class LocationService {
     print("LocationService: getCityName: 3: _permissionGranted ${_permissionGranted}");
 
     _locationData = await location.getLocation();
+    print("LocationService: getCityName: 4: latitude ${_locationData.latitude}, longitude ${ _locationData.longitude}");
+
     List<Placemark> placemarks = await placemarkFromCoordinates(
         _locationData.latitude!, _locationData.longitude!);
-    return placemarks.first.locality ?? 'Unknown';
+    var city =  placemarks.first.locality ?? 'Unknown';
+    print("LocationService: getCityName: 5: city ${city}");
+    return city;
   }
 }

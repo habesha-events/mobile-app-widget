@@ -3,52 +3,52 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'providers/event_provider.dart';
 
-class EventListWidget extends StatelessWidget {
+class EventListWidget extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() => EventListWidgetState();
+}
+
+class EventListWidgetState extends State<EventListWidget>{
+
+  @override
+  void initState() {
+    super.initState();
+
+    //get current location and fetch:
+    Provider.of<EventProvider>(context, listen: false).fetchEvents();
+
+
+    //fetch by location:
+    // builder: (context) {
+    //   return AlertDialog(
+    //     title: Text('Choose City'),
+    //     content: Column(
+    //       mainAxisSize: MainAxisSize.min,
+    //       children: [
+    //         ListTile(
+    //           title: Text('New York'),
+    //           onTap: () => Navigator.pop(context, 'New York'),
+    //         ),
+    //         ListTile(
+    //           title: Text('San Francisco'),
+    //           onTap: () => Navigator.pop(context, 'San Francisco'),
+    //         ),
+    //         // Add more cities as needed
+    //       ],
+    //     ),
+    //   );
+    // },
+    // );
+    //
+    // if (selectedCity != null) {
+    // Provider.of<EventProvider>(context, listen: false).fetchEvents(city: selectedCity);
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Events'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.location_on),
-            onPressed: () {
-              Provider.of<EventProvider>(context, listen: false).fetchEvents();
-            },
-          ),
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () async {
-              final selectedCity = await showDialog<String>(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text('Choose City'),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ListTile(
-                          title: Text('New York'),
-                          onTap: () => Navigator.pop(context, 'New York'),
-                        ),
-                        ListTile(
-                          title: Text('San Francisco'),
-                          onTap: () => Navigator.pop(context, 'San Francisco'),
-                        ),
-                        // Add more cities as needed
-                      ],
-                    ),
-                  );
-                },
-              );
-
-              if (selectedCity != null) {
-                Provider.of<EventProvider>(context, listen: false).fetchEvents(city: selectedCity);
-              }
-            },
-          ),
-        ],
-      ),
       body: Consumer<EventProvider>(
         builder: (context, provider, child) {
           if (provider.loading) {

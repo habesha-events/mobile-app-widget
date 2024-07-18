@@ -17,9 +17,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Events App',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.green,
         ),
         home: EventListWidget(),
+        debugShowCheckedModeBanner: false,
       ),
     );
   }
