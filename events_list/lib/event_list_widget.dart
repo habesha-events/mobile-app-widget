@@ -4,20 +4,21 @@ import 'package:url_launcher/url_launcher.dart';
 import 'providers/event_provider.dart';
 
 class EventListWidget extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => EventListWidgetState();
 }
 
-class EventListWidgetState extends State<EventListWidget>{
-
+class EventListWidgetState extends State<EventListWidget> {
   @override
   void initState() {
     super.initState();
 
-    //get current location and fetch:
-    Provider.of<EventProvider>(context, listen: false).fetchEvents();
 
+
+    Future.delayed(const Duration(milliseconds: 10), () {
+      //get current location and fetch:
+      Provider.of<EventProvider>(context, listen: false).fetchEvents();
+    });
 
     //fetch by location:
     // builder: (context) {
@@ -64,7 +65,7 @@ class EventListWidgetState extends State<EventListWidget>{
                 title: Text(event.title),
                 subtitle: Text('${event.startTime}\n${event.price}'),
                 isThreeLine: true,
-                onTap: (){
+                onTap: () {
                   _launchURL(event.eventUrl);
                 },
               );
@@ -74,7 +75,6 @@ class EventListWidgetState extends State<EventListWidget>{
       ),
     );
   }
-
 
   void _launchURL(url) async {
     final Uri uri = Uri.parse(url);

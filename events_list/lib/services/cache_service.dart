@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class CacheService {
-  static const cachePeriodMinutes = 2 * 60; // 2 hrs
+  static const cachePeriodMinutes = 24 * 60; // 24 hrs
 
   Future<void> cacheEvents(String city, List<dynamic> events) async {
     print("CacheService: cacheEvents: city ${city}, events.size ${events.length}");
