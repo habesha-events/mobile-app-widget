@@ -13,9 +13,10 @@ class ApiService {
       return _loadFakeData();
     } else {
       final response = await http.get(Uri.parse('$baseUrl/event/get?location=wa--seattle'));
-      print("ApiService: statusCode ${response.statusCode}");
+      print("ApiService: statusCode ${response.statusCode} ${response.body}");
       if (response.statusCode == 200) {
-        return json.decode(response.body);
+        Map<String, dynamic> parsedMap = jsonDecode(response.body.toString());
+        return parsedMap["location"];
       } else {
         throw Exception('Failed to load events');
       }
