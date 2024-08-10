@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'city_selector_widget.dart';
 import 'providers/event_provider.dart';
+
+List<String> SUPPORTED_CITIES = ['Washington, D.C.', 'Minneapolis', 'Los Angeles', 'New York City', 'Seattle', 'Dallas', 'Atlanta', 'Denver', 'San Francisco', 'Boston', 'Houston', 'Chicago', 'San Diego', 'Philadelphia', 'Phoenix', 'Portland', 'Austin', 'Miami', 'Detroit', 'Baltimore', 'Toronto', 'Calgary', 'Edmonton', 'Vancouver', 'Montreal', 'Ottawa', 'Winnipeg', 'Hamilton', 'Kitchener', 'London', 'Halifax', 'Victoria', 'Quebec City', 'Surrey', 'Mississauga', 'Burnaby', 'Regina', 'Saskatoon', 'Windsor', 'Oshawa', 'London', 'Frankfurt', 'Stockholm', 'Rome', 'Amsterdam', 'Paris', 'Berlin', 'Oslo', 'Brussels', 'Copenhagen', 'Madrid', 'Vienna', 'Zurich', 'Munich', 'Lisbon', 'Helsinki', 'Dublin', 'Athens', 'Prague', 'Warsaw'];
 
 class EventListWidget extends StatefulWidget {
   @override
@@ -55,8 +58,8 @@ class EventListWidgetState extends State<EventListWidget> {
           }
           return Column(
             children: [
-             Spacer(),
-              Expanded(child: _citySelectorWidget(provider)),
+            Padding(padding: EdgeInsets.all(20.0)),
+              CitySelectorWidget(provider :provider),
               Expanded(child: _listViewWidget(provider))
             ],
           );
@@ -64,38 +67,6 @@ class EventListWidgetState extends State<EventListWidget> {
       ),
     );
   }
-
-  _citySelectorWidget(provider) => ListTile(
-        title: Text('City: someTitleCity'),
-        onTap: () {
-          showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                title: Text('Choose City'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ListTile(
-                      title: Text('New York'),
-                      onTap: () => Navigator.pop(context, 'New York'),
-                    ),
-                    ListTile(
-                      title: Text('San Francisco'),
-                      onTap: () => Navigator.pop(context, 'San Francisco'),
-                    ),
-                    // Add more cities as needed
-                  ],
-                ),
-              );
-            },
-          ).then((selectedCity) {
-            if (selectedCity != null) {
-              provider.fetchEvents(city: selectedCity);
-            }
-          });
-        },
-      );
 
 
   Widget _listViewWidget(provider) => ListView.builder(
