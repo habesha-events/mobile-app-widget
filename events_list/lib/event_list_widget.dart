@@ -13,8 +13,6 @@ class EventListWidgetState extends State<EventListWidget> {
   void initState() {
     super.initState();
 
-
-
     Future.delayed(const Duration(milliseconds: 10), () {
       //get current location and fetch:
       Provider.of<EventProvider>(context, listen: false).fetchEvents();
@@ -55,26 +53,66 @@ class EventListWidgetState extends State<EventListWidget> {
           if (provider.loading) {
             return Center(child: CircularProgressIndicator());
           }
-
-          return ListView.builder(
-            itemCount: provider.events.length,
-            itemBuilder: (context, index) {
-              final event = provider.events[index];
-              return ListTile(
-                leading: Image.network(event.imageUrl),
-                title: Text(event.title),
-                subtitle: Text('${event.startTime}\n${event.price}'),
-                isThreeLine: true,
-                onTap: () {
-                  _launchURL(event.eventUrl);
-                },
-              );
-            },
+          return Column(
+            children: [
+             Spacer(),
+              Expanded(child: _citySelectorWidget(provider)),
+              Expanded(child: _listViewWidget(provider))
+            ],
           );
         },
       ),
     );
   }
+
+  _citySelectorWidget(provider) => ListTile(
+        title: Text('City: someTitleCity'),
+        onTap: () {
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Choose City'),
+                content: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    ListTile(
+                      title: Text('New York'),
+                      onTap: () => Navigator.pop(context, 'New York'),
+                    ),
+                    ListTile(
+                      title: Text('San Francisco'),
+                      onTap: () => Navigator.pop(context, 'San Francisco'),
+                    ),
+                    // Add more cities as needed
+                  ],
+                ),
+              );
+            },
+          ).then((selectedCity) {
+            if (selectedCity != null) {
+              provider.fetchEvents(city: selectedCity);
+            }
+          });
+        },
+      );
+
+
+  Widget _listViewWidget(provider) => ListView.builder(
+        itemCount: provider.events.length,
+        itemBuilder: (context, index) {
+          final event = provider.events[index];
+          return ListTile(
+            leading: Image.network(event.imageUrl),
+            title: Text(event.title),
+            subtitle: Text('${event.startTime}\n${event.price}'),
+            isThreeLine: true,
+            onTap: () {
+              _launchURL(event.eventUrl);
+            },
+          );
+        },
+      );
 
   void _launchURL(url) async {
     final Uri uri = Uri.parse(url);

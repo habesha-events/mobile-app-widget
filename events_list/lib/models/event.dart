@@ -1,5 +1,5 @@
 class Event {
-  final String position;
+  final String position; // this is the id of the event
   final String imageUrl;
   final String title;
   final String startTime;

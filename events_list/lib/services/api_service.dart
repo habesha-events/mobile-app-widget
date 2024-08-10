@@ -15,10 +15,16 @@ class ApiService {
       final response = await http.get(Uri.parse('$baseUrl/event/get?location=wa--seattle'));
       print("ApiService: statusCode ${response.statusCode} ${response.body}");
       if (response.statusCode == 200) {
-        Map<String, dynamic> parsedMap = jsonDecode(response.body.toString());
-        return parsedMap["location"];
+        var result = [];
+        try{
+          Map<String, dynamic> parsedMap = jsonDecode(response.body.toString());
+          result = parsedMap["location"];
+        }catch(e){
+          throw Exception('ApiService: Failed to load events: parsing error: $e');
+        }
+        return result;
       } else {
-        throw Exception('Failed to load events');
+        throw Exception('ApiService: Failed to load events');
       }
     }
   }
