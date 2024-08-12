@@ -4,6 +4,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
+import 'location_service.dart';
+
 class ApiService {
   static const String baseUrl = 'http://18.221.37.124';
   static const bool useFakeData = kDebugMode && false;
@@ -23,6 +25,9 @@ class ApiService {
           Map<String, dynamic> json = jsonDecode(response.body.toString());
           events = json["events"];
           city = json["city"];
+          if(city.contains("Washington")){
+            city = defaultCity;
+          }
         }catch(e){
           throw Exception('ApiService: Failed to load events: parsing error: $e');
         }
