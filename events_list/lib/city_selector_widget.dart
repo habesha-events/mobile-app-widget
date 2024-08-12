@@ -11,7 +11,7 @@ class CitySelectorWidget extends StatefulWidget {
 }
 
 class _CitySelectorWidgetState extends State<CitySelectorWidget> {
-  String? selectedCity; // Holds the selected city
+  String? _selectedCity; // Holds the selected city
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
         children: [
           Text('City: '),
           DropdownButton<String>(
-            value: selectedCity,
-            hint: Text('Select City'), // Initial hint when no city is selected
+            value: _selectedCity,
+            // hint: Text('Select City'), // Initial hint when no city is selected
             items: SUPPORTED_CITIES // Add more cities here
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
@@ -31,17 +31,18 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
             }).toList(),
             onChanged: (String? newValue) {
               setState(() {
-                selectedCity = newValue; // Update selected city
+                if (newValue != null) {
+                  widget.provider.fetchEvents(city: newValue);
+                }
+                _selectedCity = newValue; // Update selected city
               });
-              if (newValue != null) {
-                widget.provider.fetchEvents(city: newValue);
-              }
+
             },
             icon: Icon(Icons.arrow_downward), // Arrow down icon
           ),
         ],
       ),
-      subtitle: selectedCity != null ? Text('Selected City: $selectedCity') : null,
+      // subtitle: _selectedCity != null ? Text('Selected City: $_selectedCity') : null,
     );
   }
 }
