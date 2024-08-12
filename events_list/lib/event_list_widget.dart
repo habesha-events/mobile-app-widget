@@ -42,9 +42,7 @@ class EventListWidgetState extends State<EventListWidget> {
           return Column(
             children: [
             Padding(padding: EdgeInsets.all(20.0)),
-              Center( // Wrap CitySelectorWidget with Center
-                child: CitySelectorWidget(provider: provider),
-              ),
+              CitySelectorWidget(provider: provider),
               Expanded(child: _listViewWidget(provider))
             ],
           );

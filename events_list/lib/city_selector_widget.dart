@@ -25,6 +25,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
   Widget build(BuildContext context) {
     return ListTile(
       title: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Select City: '),
           DropdownButton<String>(
