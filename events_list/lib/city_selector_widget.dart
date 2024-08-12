@@ -1,8 +1,10 @@
 import 'package:events_app/event_list_widget.dart';
+import 'package:events_app/providers/event_provider.dart';
+import 'package:events_app/services/location_service.dart';
 import 'package:flutter/material.dart';
 
 class CitySelectorWidget extends StatefulWidget {
-  final provider;
+  final EventProvider provider;
 
   CitySelectorWidget({required this.provider});
 
@@ -28,7 +30,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
           DropdownButton<String>(
             value: _selectedCity,
             // hint: Text('Select City'), // Initial hint when no city is selected
-            items: SUPPORTED_CITIES // Add more cities here
+            items: SUPPORTED_CITIES
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
@@ -38,7 +40,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
             onChanged: (String? newValue) {
               setState(() {
                 if (newValue != null) {
-                  widget.provider.fetchEvents(city: newValue);
+                  widget.provider.fetchEvents(inputCity: newValue);
                 }
                 _selectedCity = newValue; // Update selected city
               });
