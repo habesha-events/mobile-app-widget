@@ -11,7 +11,13 @@ class CitySelectorWidget extends StatefulWidget {
 }
 
 class _CitySelectorWidgetState extends State<CitySelectorWidget> {
-  String? _selectedCity; // Holds the selected city
+  String? _selectedCity;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedCity = widget.provider.city;
+  }
 
   @override
   Widget build(BuildContext context) {

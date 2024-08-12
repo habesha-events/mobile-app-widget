@@ -20,32 +20,6 @@ class EventListWidgetState extends State<EventListWidget> {
       //get current location and fetch:
       Provider.of<EventProvider>(context, listen: false).fetchEvents();
     });
-
-    //fetch by location:
-    // builder: (context) {
-    //   return AlertDialog(
-    //     title: Text('Choose City'),
-    //     content: Column(
-    //       mainAxisSize: MainAxisSize.min,
-    //       children: [
-    //         ListTile(
-    //           title: Text('New York'),
-    //           onTap: () => Navigator.pop(context, 'New York'),
-    //         ),
-    //         ListTile(
-    //           title: Text('San Francisco'),
-    //           onTap: () => Navigator.pop(context, 'San Francisco'),
-    //         ),
-    //         // Add more cities as needed
-    //       ],
-    //     ),
-    //   );
-    // },
-    // );
-    //
-    // if (selectedCity != null) {
-    // Provider.of<EventProvider>(context, listen: false).fetchEvents(city: selectedCity);
-    // }
   }
 
   @override
@@ -59,7 +33,7 @@ class EventListWidgetState extends State<EventListWidget> {
           return Column(
             children: [
             Padding(padding: EdgeInsets.all(20.0)),
-              CitySelectorWidget(provider :provider),
+              CitySelectorWidget(provider :provider,),
               Expanded(child: _listViewWidget(provider))
             ],
           );

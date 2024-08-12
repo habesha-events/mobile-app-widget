@@ -1,6 +1,6 @@
 class ApiResponse {
-  final List<dynamic> events;
-  final String city;
+   List<dynamic> events;
+   String city;
 
   ApiResponse({
     required this.events,
