@@ -5,6 +5,13 @@ import 'city_selector_widget.dart';
 import 'providers/event_provider.dart';
 
 class EventListWidget extends StatefulWidget {
+
+  Function onErrorCallback;
+
+  EventListWidget({
+    required this.onErrorCallback,
+  });
+
   @override
   State<StatefulWidget> createState() => EventListWidgetState();
 }
@@ -29,6 +36,7 @@ class EventListWidgetState extends State<EventListWidget> {
             return Center(child: CircularProgressIndicator());
           }
           if(provider.isError){
+            widget.onErrorCallback();
             return Center(child: Text('Api Error'));
           }
           return Column(
