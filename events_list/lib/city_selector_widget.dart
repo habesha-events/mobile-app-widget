@@ -26,7 +26,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
     return ListTile(
       title: Row(
         children: [
-          Text('City: '),
+          Text('Select City: '),
           DropdownButton<String>(
             value: _selectedCity,
             // hint: Text('Select City'), // Initial hint when no city is selected
@@ -46,7 +46,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
               });
 
             },
-            icon: Icon(Icons.arrow_downward), // Arrow down icon
+            icon: Icon(Icons.keyboard_arrow_down), // Arrow down icon
           ),
         ],
       ),
