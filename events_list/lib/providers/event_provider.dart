@@ -14,6 +14,9 @@ class EventProvider with ChangeNotifier {
   bool get loading => _loading;
   bool _loading = false;
 
+  bool get isError => _isError;
+  bool _isError = false;
+
 
   final ApiService _apiService = ApiService();
   final CacheService _cacheService = CacheService();
@@ -21,6 +24,7 @@ class EventProvider with ChangeNotifier {
 
   Future<void> fetchEvents({String? inputCity}) async {
     _loading = true;
+    _isError = false;
     notifyListeners();
 
     try {
@@ -39,8 +43,8 @@ class EventProvider with ChangeNotifier {
       }
       print("EventProvider: providing ${_events.length} events");
     } catch (error) {
-      print("EventProvider: error:$error inputCity: $inputCity");
-      _events = [];
+      print("EventProvider: error=$error inputCity=$inputCity");
+      _isError = true;
     }
 
     _loading = false;

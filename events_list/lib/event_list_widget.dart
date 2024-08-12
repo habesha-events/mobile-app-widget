@@ -30,6 +30,9 @@ class EventListWidgetState extends State<EventListWidget> {
           if (provider.loading) {
             return Center(child: CircularProgressIndicator());
           }
+          if(provider.isError){
+            return Center(child: Text('Api Error'));
+          }
           return Column(
             children: [
             Padding(padding: EdgeInsets.all(20.0)),
