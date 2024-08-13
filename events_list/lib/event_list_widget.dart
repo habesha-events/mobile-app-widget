@@ -5,7 +5,6 @@ import 'city_selector_widget.dart';
 import 'providers/event_provider.dart';
 
 class EventListWidget extends StatefulWidget {
-
   Function onErrorCallback;
 
   EventListWidget({
@@ -35,22 +34,22 @@ class EventListWidgetState extends State<EventListWidget> {
           if (provider.loading) {
             return Center(child: CircularProgressIndicator());
           }
-          if(provider.isError){
+          if (provider.isError) {
             widget.onErrorCallback();
-            return Center(child: Text('Api Error'));
           }
           return Column(
             children: [
-            Padding(padding: EdgeInsets.all(20.0)),
+              Padding(padding: EdgeInsets.all(20.0)),
               CitySelectorWidget(provider: provider),
-              Expanded(child: _listViewWidget(provider))
+              provider.isError
+                  ? Center(child: Text('Api Error'))
+                  : Expanded(child: _listViewWidget(provider)),
             ],
           );
         },
       ),
     );
   }
-
 
   Widget _listViewWidget(provider) => ListView.builder(
         itemCount: provider.events.length,
