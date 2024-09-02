@@ -37,10 +37,17 @@ class LocationService {
     _locationData = await location.getLocation();
     print("LocationService: getCityName: 4: latitude ${_locationData.latitude}, longitude ${ _locationData.longitude}");
 
-    List<Placemark> placemarks = await placemarkFromCoordinates(
-        _locationData.latitude!, _locationData.longitude!);
-    var city =  placemarks.first.locality ?? 'Unknown';
+    var city = defaultCity;
+    try{
+      List<Placemark> placemarks = await placemarkFromCoordinates(
+          _locationData.latitude!, _locationData.longitude!);
+      city =  placemarks.first.locality ?? 'Unknown';
+    }catch(e){
+      print("LocationService: PlaceMark Error: ${e}");
+    }
+
     print("LocationService: getCityName: 5: city ${city}");
+
     return city;
   }
 }
