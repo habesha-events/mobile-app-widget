@@ -16,8 +16,13 @@ class ApiService {
     if (useFakeData) {
       return _loadFakeData();
     } else {
-      final response = await http.get(Uri.parse('$baseUrl/event/get?city=$city'));
-      print("ApiService: statusCode ${response.statusCode} ${response.body}");
+      var response;
+      try{
+         response = await http.get(Uri.parse('$baseUrl/event/get?city=$city'));
+        print("ApiService: statusCode ${response.statusCode} ${response.body}");
+      }catch(e){
+        throw Exception('ApiService: HTTP get call error=$e');
+      }
       if (response.statusCode == 200) {
         var events = [];
         var city = "";

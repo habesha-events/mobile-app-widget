@@ -17,6 +17,9 @@ class EventProvider with ChangeNotifier {
   bool get isError => _isError;
   bool _isError = false;
 
+  String get errorMessage => _errorMessage;
+  String _errorMessage = "";
+
 
   final ApiService _apiService = ApiService();
   final CacheService _cacheService = CacheService();
@@ -25,15 +28,17 @@ class EventProvider with ChangeNotifier {
   Future<void> fetchEvents({String? inputCity}) async {
     _loading = true;
     _isError = false;
+    _errorMessage = "";
+
     notifyListeners();
 
     try {
       inputCity ??= await _locationService.getCityName();
       final cachedEvents = await _cacheService.getCachedEvents(inputCity);
+      _city = inputCity;
 
       if (cachedEvents != null) {
         _events = cachedEvents.map((event) => Event.fromJson(event)).toList();
-        _city = inputCity;
       } else {
         // cache has expired or empty, go fetch from api
         final apiResponse = await _apiService.getEvents(inputCity);
@@ -45,6 +50,7 @@ class EventProvider with ChangeNotifier {
     } catch (error) {
       print("EventProvider: error=$error inputCity=$inputCity");
       _isError = true;
+      _errorMessage = error.toString();
     }
 
     _loading = false;
