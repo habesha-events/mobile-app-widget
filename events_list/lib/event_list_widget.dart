@@ -28,8 +28,7 @@ class EventListWidgetState extends State<EventListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Consumer<EventProvider>(
+    return  Consumer<EventProvider>(
         builder: (context, provider, child) {
           if (provider.loading) {
             return Center(child: CircularProgressIndicator());
@@ -47,8 +46,7 @@ class EventListWidgetState extends State<EventListWidget> {
             ],
           );
         },
-      ),
-    );
+      );
   }
 
   Widget _listViewWidget(provider) => ListView.builder(

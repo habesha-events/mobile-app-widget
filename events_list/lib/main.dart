@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.green,
         ),
-        home: EventListWidget(onErrorCallback: (){},),
+        home: Scaffold(body: EventListWidget(onErrorCallback: (){},)),
         debugShowCheckedModeBanner: false,
       ),
     );
