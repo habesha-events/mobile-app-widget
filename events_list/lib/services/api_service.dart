@@ -18,7 +18,7 @@ class ApiService {
     } else {
       var response;
       try{
-         response = await http.get(Uri.parse('$baseUrl/event/get?city=$city'));
+         response = await http.get(Uri.parse('$baseUrl/events/get?city=$city'));
         print("ApiService: statusCode: ${response.statusCode} body: ${response.body}");
       }catch(e){
         throw Exception('NO INTERNET $e');
