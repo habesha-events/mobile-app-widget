@@ -19,9 +19,9 @@ class ApiService {
       var response;
       try{
          response = await http.get(Uri.parse('$baseUrl/event/get?city=$city'));
-        print("ApiService: statusCode ${response.statusCode} ${response.body}");
+        print("ApiService: statusCode: ${response.statusCode} body: ${response.body}");
       }catch(e){
-        throw Exception('ApiService: HTTP get call error=$e');
+        throw Exception('NO INTERNET $e');
       }
       if (response.statusCode == 200) {
         var events = [];
@@ -34,11 +34,11 @@ class ApiService {
             city = defaultCity;
           }
         }catch(e){
-          throw Exception('ApiService: Failed to load events: parsing error: $e');
+          throw Exception('Failed to load events: parsing error: $e');
         }
         return ApiResponse(events: events, city: city);
       } else {
-        throw Exception('ApiService: Failed to load events');
+        throw Exception('Failed to load events: statusCode: ${response.statusCode}');
       }
     }
   }

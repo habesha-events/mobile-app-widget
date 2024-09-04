@@ -41,7 +41,7 @@ class EventListWidgetState extends State<EventListWidget> {
               Padding(padding: EdgeInsets.all(20.0)),
               CitySelectorWidget(provider: provider),
               provider.isError
-                  ? Center(child: Text('Api Error: ${provider.errorMessage}'))
+                  ? Center(child: Text(provider.errorMessage))
                   : Expanded(child: _listViewWidget(provider)),
             ],
           );
