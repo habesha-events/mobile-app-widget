@@ -28,6 +28,8 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Select City: '),
+          !(SUPPORTED_CITIES.contains(_selectedCity))
+              ? Text("$_selectedCity X", style: TextStyle(color: Colors.red))  :
           DropdownButton<String>(
             value: _selectedCity,
             // hint: Text('Select City'), // Initial hint when no city is selected

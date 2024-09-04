@@ -11,7 +11,6 @@ class ApiService {
   static const bool useFakeData = kDebugMode && false;
 
   Future<ApiResponse> getEvents(String city) async {
-    city = city.replaceAll(".", "");
     print("ApiService: getEvents: useFakeData=$useFakeData, city=${city}");
     if (useFakeData) {
       return _loadFakeData();

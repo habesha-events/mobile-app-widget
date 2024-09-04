@@ -1,10 +1,10 @@
 class Event {
-  final String position; // this is the id of the event
-  final String imageUrl;
-  final String title;
-  final String startTime;
-  final String eventUrl;
-  final String price;
+  final String? position; // this is the id of the event
+  final String? imageUrl;
+  final String? title;
+  final String? startTime;
+  final String? eventUrl;
+  final String? price;
 
   Event({
     required this.position,

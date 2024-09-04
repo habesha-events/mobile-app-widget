@@ -54,8 +54,8 @@ class EventListWidgetState extends State<EventListWidget> {
         itemBuilder: (context, index) {
           final event = provider.events[index];
           return ListTile(
-            leading: Image.network(event.imageUrl),
-            title: Text(event.title),
+            leading: Image.network(event.imageUrl??'imageUrl', ),
+            title: Text(event.title??''),
             subtitle: Text('${event.startTime}\n${event.price}'),
             isThreeLine: true,
             onTap: () {
