@@ -56,7 +56,7 @@ class EventProvider with ChangeNotifier {
           // return;{
 
         }
-        await _cacheService.cacheEvents(apiResponse.city, apiResponse.events);
+        await _cacheService.cacheEvents(inputCity, apiResponse.events);
       }
       print("EventProvider: providing ${_events.length} events");
     } catch (error) {
