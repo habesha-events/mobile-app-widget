@@ -1,3 +1,4 @@
+import 'package:events_app/models/api_response.dart';
 import 'package:flutter/material.dart';
 import '../models/event.dart';
 import '../services/api_service.dart';
@@ -5,11 +6,11 @@ import '../services/cache_service.dart';
 import '../services/location_service.dart';
 
 class EventProvider with ChangeNotifier {
-  List<Event> get events => _events;
-  List<Event> _events = [];
+  ApiResponse get localResponse => _localResponse;
+  ApiResponse _localResponse = ApiResponse(events: [], city: "", response_type: "");
 
-  String get city => _city;
-  String _city = "";
+  String get inputCity => _inputCity;
+  String _inputCity = "";
 
   bool get loading => _loading;
   bool _loading = false;
@@ -33,30 +34,20 @@ class EventProvider with ChangeNotifier {
     notifyListeners();
 
     try {
+      List<Event> _events = [];
       inputCity ??= await _locationService.getCityName();
-      _city = inputCity;
+      _inputCity = inputCity;
+      final cachedEventsResponse = await _cacheService.getCachedEventsResponse(inputCity);
 
-      final cachedEvents = await _cacheService.getCachedEvents(inputCity);
-
-      if (cachedEvents != null) {
-        _events = cachedEvents.map((event) => Event.fromJson(event)).toList();
+      if (cachedEventsResponse != null) {
+        _events = cachedEventsResponse.events.map((event) => Event.fromJson(event)).toList();
+        _localResponse = ApiResponse(events: _events, city: cachedEventsResponse.city, response_type: cachedEventsResponse.response_type);
       } else {
         // cache has expired or empty, go fetch from api
         final apiResponse = await _apiService.getEvents(inputCity);
         _events = apiResponse.events.map((e) => Event.fromJson(e)).toList();
-        _city = apiResponse.city;
-        if(!SUPPORTED_CITIES.contains(_city)){
-          //1st. check if its;s a list or not
-
-
-          // _isError = true;
-          // _errorMessage = "City $_city is not supported!";
-          // _loading = false;
-          // notifyListeners();
-          // return;{
-
-        }
-        await _cacheService.cacheEvents(inputCity, apiResponse.events);
+        _localResponse = ApiResponse(events: _events, city:  apiResponse.city, response_type: apiResponse.response_type);
+        await _cacheService.cacheEvents(inputCity, apiResponse.events, apiResponse.response_type, apiResponse.city);
       }
       print("EventProvider: providing ${_events.length} events");
     } catch (error) {

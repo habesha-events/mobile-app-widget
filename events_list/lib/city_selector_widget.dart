@@ -19,7 +19,13 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
   @override
   void initState() {
     super.initState();
-    _selectedCity = widget.provider.city;
+    var localResponse = widget.provider.localResponse;
+
+    if ( localResponse.response_type == "neighboring_cities" ){
+      _selectedCity = widget.provider.inputCity;
+    }else{
+      _selectedCity = localResponse.city;
+    }
   }
 
   @override
