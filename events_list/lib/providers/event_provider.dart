@@ -34,8 +34,9 @@ class EventProvider with ChangeNotifier {
 
     try {
       inputCity ??= await _locationService.getCityName();
-      final cachedEvents = await _cacheService.getCachedEvents(inputCity);
       _city = inputCity;
+
+      final cachedEvents = await _cacheService.getCachedEvents(inputCity);
 
       if (cachedEvents != null) {
         _events = cachedEvents.map((event) => Event.fromJson(event)).toList();
@@ -44,6 +45,17 @@ class EventProvider with ChangeNotifier {
         final apiResponse = await _apiService.getEvents(inputCity);
         _events = apiResponse.events.map((e) => Event.fromJson(e)).toList();
         _city = apiResponse.city;
+        if(!SUPPORTED_CITIES.contains(_city)){
+          //1st. check if its;s a list or not
+
+
+          // _isError = true;
+          // _errorMessage = "City $_city is not supported!";
+          // _loading = false;
+          // notifyListeners();
+          // return;{
+
+        }
         await _cacheService.cacheEvents(apiResponse.city, apiResponse.events);
       }
       print("EventProvider: providing ${_events.length} events");

@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 
 class CitySelectorWidget extends StatefulWidget {
   final EventProvider provider;
+  final Function(String) onChanged;
 
-  CitySelectorWidget({required this.provider});
+  CitySelectorWidget({required this.provider, required this.onChanged});
 
   @override
   _CitySelectorWidgetState createState() => _CitySelectorWidgetState();
@@ -43,7 +44,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
             onChanged: (String? newValue) {
               setState(() {
                 if (newValue != null) {
-                  widget.provider.fetchEvents(inputCity: newValue);
+                  widget.onChanged(newValue);
                 }
                 _selectedCity = newValue; // Update selected city
               });

@@ -22,8 +22,13 @@ class EventListWidgetState extends State<EventListWidget> {
 
     Future.delayed(const Duration(milliseconds: 10), () {
       //get current location and fetch:
-      Provider.of<EventProvider>(context, listen: false).fetchEvents();
+      _fetchEvents();
     });
+  }
+
+
+  _fetchEvents({String? city  = null}) {
+    Provider.of<EventProvider>(context, listen: false).fetchEvents(inputCity: city);
   }
 
   @override
@@ -39,7 +44,9 @@ class EventListWidgetState extends State<EventListWidget> {
           return Column(
             children: [
               Padding(padding: EdgeInsets.all(20.0)),
-              CitySelectorWidget(provider: provider),
+              CitySelectorWidget(provider: provider, onChanged: (city) {
+                _fetchEvents(city: city);
+              }),
               provider.isError
                   ? Center(child: Text(provider.errorMessage))
                   : Expanded(child: _listViewWidget(provider)),
