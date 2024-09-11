@@ -25,17 +25,18 @@ class ApiService {
       if (response.statusCode == 200) {
         var events = [];
         var city = "";
+        var response_type = "";
+
         try{
           Map<String, dynamic> json = jsonDecode(response.body.toString());
           events = json["events"];
           city = json["city"];
-          if(city.contains("Washington")){
-            city = defaultCity;
-          }
+          response_type = json["response_type"];
         }catch(e){
           throw Exception('Failed to load events: parsing error: $e');
         }
-        return ApiResponse(events: events, city: city);
+
+        return ApiResponse(events: events, city: city, response_type: response_type);
       } else {
         throw Exception('Failed to load events: statusCode: ${response.statusCode}');
       }
@@ -46,6 +47,6 @@ class ApiService {
     print("ApiService: loadFakeData");
     final response = await rootBundle.loadString('assets/events_api_response.json');
     Map<String, dynamic> json = jsonDecode(response);
-    return ApiResponse(events: json["events"], city:  json["city"]);
+    return ApiResponse(events: json["events"], city:  json["city"], response_type: json["response_type"]);
   }
 }

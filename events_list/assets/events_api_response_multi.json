@@ -1,0 +1,175 @@
+{
+  "city": "['Los Angeles', 'Phoenix', 'Seattle']",
+  "events": [
+    [
+      {
+        "event_title": "Habesha Event",
+        "location": "Upright Citizens Brigade Theatre",
+        "event_url": "https://www.eventbrite.com/e/make-that-sandwich-live-and-livestreamed-tickets-1001605638427?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Thursday • 8:30 PM",
+        "price": "From $11.64",
+        "event_id": 21,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F833641999%2F1759584389433%2F1%2Foriginal.20240824-192018?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=20%2C0%2C2160%2C1080&s=e71dc2347626c36b8f3ef98df67ed6f5",
+        "created_at": "2024-09-03T22:43:17.255970"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "The Knott's Hotel",
+        "event_url": "https://www.eventbrite.com/e/upaw-presents-a-tribute-to-gaza-tickets-951202701887?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Sat, Sep 21 •  6:00 PM",
+        "price": "From $60.00",
+        "event_id": 22,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F811235809%2F270714872287%2F1%2Foriginal.20240720-015624?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C3%2C562%2C281&s=054535ac5c5c0fb713e75d5cdc6d883f",
+        "created_at": "2024-09-03T22:43:17.264658"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "8338 Beverly Blvd 2nd floor",
+        "event_url": "https://www.eventbrite.com/e/rosh-hashanah-and-yom-kippur-tickets-1001620282227?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Wed, Oct 2 •  6:15 PM",
+        "price": "Check ticket price on event",
+        "event_id": 23,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F833404849%2F215869894163%2F1%2Foriginal.20240824-004615?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C144%2C624%2C312&s=ffb41c3c485d61e6a30960f4eb957389",
+        "created_at": "2024-09-03T22:43:17.273218"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "Holistic Jew House",
+        "event_url": "https://www.eventbrite.com/e/new-moon-ritual-tickets-994214561517?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Today • 6:30 PM",
+        "price": "From $28.52",
+        "event_id": 24,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F706606889%2F204188567281%2F1%2Foriginal.20240227-183035?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C504%2C4032%2C2016&s=26a0dfdb0cac6675ddb29a8432518a87",
+        "created_at": "2024-09-03T22:43:17.283969"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "L’Antica Pizzeria da Michele",
+        "event_url": "https://www.eventbrite.com/e/laugh-kindly-elevated-live-comedy-experience-tickets-980426160037?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Sunday • 7:00 PM",
+        "price": "From $23.18",
+        "event_id": 25,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F824232369%2F2264372986913%2F1%2Foriginal.20240809-222608?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=0c300680d75e475cee2de2573e2450e2",
+        "created_at": "2024-09-03T22:43:17.292416"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "Upright Citizens Brigade Theatre",
+        "event_url": "https://www.eventbrite.com/e/form-night-hosted-by-smith-givens-adumer-tickets-982032564837?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Wed, Sep 11 •  7:00 PM",
+        "price": "From $11.64",
+        "event_id": 26,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F808909589%2F1352105514983%2F1%2Foriginal.20240716-191252?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C125%2C2160%2C1080&s=6ed26044b5bc12447afec224e5b2feca",
+        "created_at": "2024-09-03T22:43:17.301283"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": null,
+        "event_url": "https://www.eventbrite.com/e/rosh-hashana-yom-kippur-services-tickets-917553887377?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "YJP",
+        "price": "From $105.00",
+        "event_id": 27,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F603529349%2F9648758809%2F1%2Foriginal.20230921-183412?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C155%2C1758%2C879&s=c2e3895e7920317763e5f14fbab97383",
+        "created_at": "2024-09-03T22:43:17.310178"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "Studious Coworking Space",
+        "event_url": "https://www.eventbrite.com/e/community-screening-book-reading-discussion-with-jean-baptiste-phou-registration-980482839567?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Sunday • 5:00 PM",
+        "price": "From $0.00",
+        "event_id": 28,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F836685339%2F2264513584253%2F1%2Foriginal.20240829-012639?crop=focalpoint&fit=crop&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.776515151515&fp-y=0.503731343284&s=94e2eef10bb16537fbbfedbd7e3e9d3f",
+        "created_at": "2024-09-03T22:43:17.318641"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "Ocean Park",
+        "event_url": "https://www.eventbrite.com/e/holistic-jew-shabbat-eve-tickets-1000372620437?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Fri, Sep 13 •  6:30 PM",
+        "price": "From $21.05",
+        "event_id": 29,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F831850129%2F204188567281%2F1%2Foriginal.jpg?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=382c5de19485379540723ef1b1e0c669",
+        "created_at": "2024-09-03T22:43:17.326858"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "CaliKings Studio",
+        "event_url": "https://www.eventbrite.com/e/a-very-very-nice-comedy-show-tickets-989736036127?aff=ebdssbdestsearch",
+        "city": "Los Angeles",
+        "start_time": "Saturday • 8:00 PM",
+        "price": "From $10.00",
+        "event_id": 30,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F825775639%2F1009795753233%2F1%2Foriginal.20240813-033318?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2200%2C1100&s=5631fc60fde3cd8dfdb88397a7d867c5",
+        "created_at": "2024-09-03T22:43:17.335247"
+      }
+    ],
+    [
+      {
+        "event_title": "some title 2",
+        "location": "Addis",
+        "event_url": "some url",
+        "city": "Seattle",
+        "start_time": "2022-02-01",
+        "price": "100$",
+        "event_id": 2,
+        "image_url": "some url",
+        "created_at": null
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "Third Place Books",
+        "event_url": "https://www.eventbrite.com/e/susan-greenway-and-laurie-ann-thompson-with-joni-sensel-tickets-1001014560497?aff=ebdssbdestsearch",
+        "city": "Seattle",
+        "start_time": "Tue, Oct 8 •  6:00 PM",
+        "price": "From $0.00",
+        "event_id": 17,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F832722479%2F285290955607%2F1%2Foriginal.20240823-001608?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C22%2C1920%2C960&s=0cf3bd137697ac0b7323b4095e9a158f",
+        "created_at": "2024-09-03T22:41:38.137967"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "The Center for Wooden Boats",
+        "event_url": "https://www.eventbrite.com/e/happy-hour-4-good-tickets-635963653407?aff=ebdssbdestsearch",
+        "city": "Seattle",
+        "start_time": "Thu, Sep 19 •  6:00 PM  + 1 more",
+        "price": "From $50.00",
+        "event_id": 18,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F514193529%2F151740448543%2F1%2Foriginal.20190312-000415?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=208%2C0%2C3000%2C1500&s=2a17ff10db237717bb02c7b894ba1270",
+        "created_at": "2024-09-03T22:41:38.147129"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "Kenmore Camera",
+        "event_url": "https://www.eventbrite.be/e/photographing-bhutan-live-w-john-greengo-tickets-978619325747?aff=ebdssbdestsearch",
+        "city": "Seattle",
+        "start_time": "Saturday • 11:00 AM",
+        "price": "Free",
+        "event_id": 19,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F821749909%2F181428473114%2F1%2Foriginal.20240806-191321?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=2050cc23e61f44dffdb5c6eaa3c1df58",
+        "created_at": "2024-09-03T22:41:38.156619"
+      },
+      {
+        "event_title": "Habesha Event",
+        "location": "NW Rockhounds",
+        "event_url": "https://www.eventbrite.com/e/opal-cabochon-cutting-advanced-lapidary-tickets-969873757517?aff=ebdssbdestsearch",
+        "city": "Seattle",
+        "start_time": "Sat, Sep 28 •  11:00 AM",
+        "price": "From $90.00",
+        "event_id": 20,
+        "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F537727389%2F156059678985%2F1%2Foriginal.20230617-000908?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=114%2C45%2C1566%2C783&s=56f1391b19b3d3aca95bf4e4a6ccd24f",
+        "created_at": "2024-09-03T22:41:38.164760"
+      }
+    ]
+  ],
+  "response_type": "neighboring_cities"
+}
