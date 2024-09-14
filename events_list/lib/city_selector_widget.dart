@@ -24,7 +24,8 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
     if ( localResponse.response_type == "neighboring_cities" ){
       _selectedCity = localResponse.city
           .split(",")[0]
-          .replaceAll("'", "replace"); // split array string and take the middle one
+          .replaceAll("[", "") // split array string and take the middle one
+          .replaceAll("'", ""); // split array string and take the middle one
     }else{
       _selectedCity = localResponse.city;
     }
@@ -39,8 +40,6 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text('Select City: '),
-          !(SUPPORTED_CITIES.contains(_selectedCity) && debug)
-              ?  Text("$_selectedCity X", style: TextStyle(color: Colors.red)) :
           DropdownButton<String>(
             value: _selectedCity,
             // hint: Text('Select City'), // Initial hint when no city is selected
