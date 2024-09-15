@@ -5,7 +5,7 @@ import 'city_selector_widget.dart';
 import 'providers/event_provider.dart';
 
 class EventListWidget extends StatefulWidget {
-  Function onErrorCallback;
+  Function(String) onErrorCallback;
 
   EventListWidget({
     required this.onErrorCallback,
@@ -39,7 +39,7 @@ class EventListWidgetState extends State<EventListWidget> {
             return Center(child: CircularProgressIndicator());
           }
           if (provider.isError) {
-            widget.onErrorCallback();
+            widget.onErrorCallback(provider.errorMessage);
           }
           return Column(
             children: [
