@@ -34,23 +34,26 @@ class EventProvider with ChangeNotifier {
     notifyListeners();
 
     try {
-      List<Event> _events = [];
       inputCity ??= await _locationService.getCityName();
       _inputCity = inputCity;
       _setLocalResponseCity();
       final cachedEventsResponse = await _cacheService.getCachedEventsResponse(inputCity);
 
       if (cachedEventsResponse != null) {
-        _events = cachedEventsResponse.events.map((event) => Event.fromJson(event)).toList();
-        _localResponse = ApiResponse(events: _events, city: cachedEventsResponse.city, response_type: cachedEventsResponse.response_type);
+        _localResponse = ApiResponse(
+            events: cachedEventsResponse.events.map((event) => Event.fromJson(event)).toList(),
+            city: cachedEventsResponse.city,
+            response_type: cachedEventsResponse.response_type);
       } else {
         // cache has expired or empty, go fetch from api
         final apiResponse = await _apiService.getEvents(inputCity);
-        _events = apiResponse.events.map((e) => Event.fromJson(e)).toList();
-        _localResponse = ApiResponse(events: _events, city:  apiResponse.city, response_type: apiResponse.response_type);
+        _localResponse = ApiResponse(
+            events: apiResponse.events.map((event) => Event.fromJson(event)).toList(),
+            city: apiResponse.city,
+            response_type: apiResponse.response_type);
         await _cacheService.cacheEvents(inputCity, apiResponse.events, apiResponse.response_type, apiResponse.city);
       }
-      print("EventProvider: providing ${_events.length} events");
+      print("EventProvider: providing ${_localResponse.events.length} events");
     } catch (error) {
       print("EventProvider: error=$error inputCity=$inputCity");
       _isError = true;
