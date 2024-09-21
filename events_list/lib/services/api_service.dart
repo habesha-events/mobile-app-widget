@@ -48,10 +48,16 @@ class ApiService {
     http.Response? response;
     int retryCount = 0;
     const maxRetries = 3;
+    const token = 'yene_secret_qulf_42';
 
     while (retryCount < maxRetries) {
       try {
-        response = await http.get(Uri.parse('$baseUrl/events/get?city=$city'));
+        response = await http.get(
+          Uri.parse('$baseUrl/events/get?city=$city'),
+          headers: {'Authorization': 'Bearer $token',
+          },
+        );
+
         print(
             "ApiService: _getResponse: statusCode: ${response.statusCode} body: ${response.body}");
         return response;
