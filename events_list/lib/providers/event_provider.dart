@@ -37,6 +37,7 @@ class EventProvider with ChangeNotifier {
       List<Event> _events = [];
       inputCity ??= await _locationService.getCityName();
       _inputCity = inputCity;
+      _setLocalResponseCity();
       final cachedEventsResponse = await _cacheService.getCachedEventsResponse(inputCity);
 
       if (cachedEventsResponse != null) {
@@ -58,5 +59,13 @@ class EventProvider with ChangeNotifier {
 
     _loading = false;
     notifyListeners();
+  }
+
+  void _setLocalResponseCity() {
+    if(SUPPORTED_CITIES.contains(_inputCity)){
+      _localResponse.city = _inputCity;
+    }else{
+      _localResponse.city = defaultCity;
+    }
   }
 }

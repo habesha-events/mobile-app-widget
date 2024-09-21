@@ -31,8 +31,6 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
     }
   }
 
-  var debug = false;
-
   @override
   Widget build(BuildContext context) {
     return ListTile(
