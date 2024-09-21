@@ -15,13 +15,7 @@ class ApiService {
     if (useFakeData) {
       return _loadFakeData();
     } else {
-      var response;
-      try{
-         response = await http.get(Uri.parse('$baseUrl/events/get?city=$city'));
-        print("ApiService: statusCode: ${response.statusCode} body: ${response.body}");
-      }catch(e){
-        throw Exception('NO INTERNET $e');
-      }
+      var response = await _getResponse(city);
       if (response.statusCode == 200) {
         var events = [];
         var city = "";
@@ -48,5 +42,30 @@ class ApiService {
     final response = await rootBundle.loadString('assets/events_api_response.json');
     Map<String, dynamic> json = jsonDecode(response);
     return ApiResponse(events: json["events"], city:  json["city"], response_type: json["response_type"]);
+  }
+
+  Future<http.Response> _getResponse(city) async {
+    http.Response? response;
+    int retryCount = 0;
+    const maxRetries = 3;
+
+    while (retryCount < maxRetries) {
+      try {
+        response = await http.get(Uri.parse('$baseUrl/events/get?city=$city'));
+        print(
+            "ApiService: _getResponse: statusCode: ${response.statusCode} body: ${response.body}");
+        return response;
+      } catch (e) {
+        retryCount++;
+        print('ApiService: _getResponse: Retry attempt $retryCount failed: $e');
+        if (retryCount < maxRetries) {
+          await Future.delayed(const Duration(seconds: 1));
+        } else {
+          print('ApiService: _getResponse: Failed to get response after $maxRetries retries. Error is $e');
+          throw Exception('NO INTERNET $e');
+        }
+      }
+    }
+    throw Exception('ApiService: _getResponse: This should never happen');
   }
 }
