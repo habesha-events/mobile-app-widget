@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:events_app/models/api_response.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
@@ -61,14 +62,28 @@ class ApiService {
         print(
             "ApiService: _getResponse: statusCode: ${response.statusCode} body: ${response.body}");
         return response;
-      } catch (e) {
+      } catch (e, stackTrace) {
         retryCount++;
         print('ApiService: _getResponse: Retry attempt $retryCount failed: $e');
         if (retryCount < maxRetries) {
           await Future.delayed(const Duration(seconds: 1));
         } else {
+
+          print('ApiService: _getResponse: Error type: ${e.runtimeType}');
+          print('ApiService: _getResponse: Error message: $e');
+          print('ApiService: _getResponse: Stack trace: $stackTrace');
+
+          if (e is SocketException) {
+            print('ApiService: _getResponse: OS Error: ${e.osError}'); // Platform-specific error code
+
+            if (e.osError != null) {
+              print('ApiService: _getResponse:OS Error Code: ${e.osError!.errorCode}');
+              print('ApiService: _getResponse:OS Error Message: ${e.osError!.message}');
+            }
+          }
+
           print('ApiService: _getResponse: Failed to get response after $maxRetries retries. Error is $e');
-          throw Exception('NO INTERNET $e');
+          throw Exception('NO INTERNET $e $stackTrace');
         }
       }
     }
