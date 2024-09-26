@@ -19,7 +19,7 @@ class Event {
     return Event(
       position: json['Position'],
       imageUrl: json['image_url'],
-      title: json['title'],
+      title: json['event_title'],
       startTime: json['start_time'],
       eventUrl: json['event_url'],
       price: json['price'],

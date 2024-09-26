@@ -69,8 +69,11 @@ class EventListWidgetState extends State<EventListWidget> {
           final event = provider.localResponse.events[index];
           return ListTile(
             leading: Image.network(event.imageUrl??'imageUrl', ),
-            title: Text(event.title??''),
-            subtitle: Text('${event.startTime}\n${event.price}'),
+            title: Text(event.title??'Event',
+                style: const TextStyle(fontWeight: FontWeight.bold)),
+            subtitle: Text(
+                '${event.startTime}\n${event.price}'
+              ),
             isThreeLine: true,
             onTap: () {
               _launchURL(event.eventUrl);
