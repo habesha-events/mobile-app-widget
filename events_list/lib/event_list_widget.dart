@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'city_selector_widget.dart';
 import 'providers/event_provider.dart';
+import 'dart:convert';
 
 class EventListWidget extends StatefulWidget {
   Function(String) onErrorCallback;
@@ -71,9 +72,10 @@ class EventListWidgetState extends State<EventListWidget> {
             leading: Image.network(event.imageUrl??'imageUrl', ),
             title: Text(event.title??'Event',
                 style: const TextStyle(fontWeight: FontWeight.bold)),
-            subtitle: Text(
-                '${event.startTime}\n${event.price}'
-              ),
+            subtitle:
+            Text(
+                utf8.decode('${event.startTime}\n${event.price}'.codeUnits)
+            ),
             isThreeLine: true,
             onTap: () {
               _launchURL(event.eventUrl);

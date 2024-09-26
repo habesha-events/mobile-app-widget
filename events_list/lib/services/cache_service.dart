@@ -26,7 +26,7 @@ class CacheService {
       final cacheData = json.decode(cacheString);
       final currentCacheMilliSeconds = DateTime.now().millisecondsSinceEpoch - cacheData['timestamp'];
       if (currentCacheMilliSeconds < cachePeriodMinutes * 60 * 1000) {
-        print("CacheService: getCachedEvents: inputCity ${inputCity} : currentCacheSeconds ${currentCacheMilliSeconds/1000}: returning cached events!");
+        print("CacheService: getCachedEvents: inputCity ${inputCity} : currentCacheSeconds ${currentCacheMilliSeconds/1000}: returning cached data: $cacheData");
         return ApiResponse(events: cacheData['events'], city: cacheData['city'], response_type: cacheData['response_type']);
       }
     }
