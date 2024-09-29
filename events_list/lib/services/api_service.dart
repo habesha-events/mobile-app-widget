@@ -9,7 +9,7 @@ import 'location_service.dart';
 
 class ApiService {
   static const String baseUrl = 'http://18.221.37.124';
-  static const bool useFakeData = kDebugMode ;
+  static const bool useFakeData = kDebugMode && false;
 
   Future<ApiResponse> getEvents(String city) async {
     print("ApiService: getEvents: useFakeData=$useFakeData, city=${city}");
