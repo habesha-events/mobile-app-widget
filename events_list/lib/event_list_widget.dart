@@ -76,7 +76,11 @@ class EventListWidgetState extends State<EventListWidget> {
                 child: Image.network(
                     event.imageUrl ?? 'imageUrl is null',
                     errorBuilder: (context, error, stackTrace) {
-                      return const Icon(Icons.image);
+                      return SizedBox(
+                        width: 120,
+                        height: 80,
+                        child: const Icon(Icons.image, size: 50),
+                      );
                     })),
             title: _getTitleWidget(event.title ?? 'Event'),
             subtitle: Text(
