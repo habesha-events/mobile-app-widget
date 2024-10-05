@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'city_selector_widget.dart';
@@ -77,13 +78,7 @@ class EventListWidgetState extends State<EventListWidget> {
                     errorBuilder: (context, error, stackTrace) {
                       return const Icon(Icons.image);
                     })),
-            title: Text(
-              event.title ?? 'Event',
-              style: TextStyle(fontWeight: FontWeight.bold,
-              overflow: TextOverflow.ellipsis,
-              ),
-              maxLines: 1,
-            ),
+            title: _getTitleWidget(event.title ?? 'Event'),
             subtitle: Text(
                 utf8.decode('${event.startTime}\n${event.price}'.codeUnits)
             ),
@@ -94,6 +89,27 @@ class EventListWidgetState extends State<EventListWidget> {
           );
         },
       );
+
+  Widget _getTitleWidget(String text) {
+    if (text.length > 25) {
+      return SizedBox(
+        height: 20,
+        child: Marquee(
+          text: text,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+          scrollAxis: Axis.horizontal,
+          blankSpace: 20.0,
+          velocity: 30.0,
+        ),
+      );
+    } else {
+      return Text(
+        text,
+        style: const TextStyle(fontWeight: FontWeight.bold),
+        maxLines: 1,
+      );
+    }
+  }
 
   void _launchURL(url) async {
     final Uri uri = Uri.parse(url);
