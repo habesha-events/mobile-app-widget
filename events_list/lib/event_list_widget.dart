@@ -69,11 +69,22 @@ class EventListWidgetState extends State<EventListWidget> {
         itemBuilder: (context, index) {
           final event = provider.localResponse.events[index];
           return ListTile(
-            leading: Image.network(event.imageUrl??'imageUrl', ),
-            title: Text(event.title??'Event',
-                style: const TextStyle(fontWeight: FontWeight.bold)),
-            subtitle:
-            Text(
+            leading: SizedBox(
+                width: 120,
+                height: 80,
+                child: Image.network(
+                    event.imageUrl ?? 'imageUrl is null',
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.image);
+                    })),
+            title: Text(
+              event.title ?? 'Event',
+              style: TextStyle(fontWeight: FontWeight.bold,
+              overflow: TextOverflow.ellipsis,
+              ),
+              maxLines: 1,
+            ),
+            subtitle: Text(
                 utf8.decode('${event.startTime}\n${event.price}'.codeUnits)
             ),
             isThreeLine: true,
