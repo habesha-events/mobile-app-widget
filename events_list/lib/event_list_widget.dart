@@ -29,7 +29,8 @@ class EventListWidgetState extends State<EventListWidget> {
   }
 
   _fetchEvents({String? city = null}) {
-    Provider.of<EventProvider>(context, listen: false).fetchEvents(inputCity: city);
+    Provider.of<EventProvider>(context, listen: false)
+        .fetchEvents(inputCity: city);
   }
 
   @override
@@ -48,11 +49,14 @@ class EventListWidgetState extends State<EventListWidget> {
               children: [
                 Column(
                   children: [
-                    CitySelectorWidget(provider: provider, onChanged: (city) {
-                      _fetchEvents(city: city);
-                    }),
+                    CitySelectorWidget(
+                        provider: provider,
+                        onChanged: (city) {
+                          _fetchEvents(city: city);
+                        }),
                     provider.localResponse.response_type == "neighboring_cities"
-                        ? Text('Showing events from ${provider.localResponse.city.replaceAll("[", "").replaceAll("]", "").replaceAll("'", "")}')
+                        ? Text(
+                            'Showing events from ${provider.localResponse.city.replaceAll("[", "").replaceAll("]", "").replaceAll("'", "")}')
                         : Container(),
                     Expanded(
                       child: _mainContentWidget(provider),
@@ -96,32 +100,31 @@ class EventListWidgetState extends State<EventListWidget> {
   }
 
   Widget _listViewWidget(provider) => ListView.builder(
-    itemCount: provider.localResponse.events.length,
-    itemBuilder: (context, index) {
-      final event = provider.localResponse.events[index];
-      return ListTile(
-        leading: SizedBox(
-            width: 120,
-            height: 80,
-            child: Image.network(
-                event.imageUrl ?? 'imageUrl is null',
-                errorBuilder: (context, error, stackTrace) {
+        itemCount: provider.localResponse.events.length,
+        itemBuilder: (context, index) {
+          final event = provider.localResponse.events[index];
+          return ListTile(
+            leading: SizedBox(
+                width: 120,
+                height: 80,
+                child: Image.network(event.imageUrl ?? 'imageUrl is null',
+                    errorBuilder: (context, error, stackTrace) {
                   return SizedBox(
                     width: 120,
                     height: 80,
                     child: const Icon(Icons.image, size: 50),
                   );
                 })),
-        title: _getTitleWidget(event.title ?? 'Event'),
-        subtitle: Text(
-            utf8.decode('${event.startTime}\n${event.price}'.codeUnits)),
-        isThreeLine: true,
-        onTap: () {
-          _launchURL(event.eventUrl);
+            title: _getTitleWidget(event.title ?? 'Event'),
+            subtitle: Text(
+                utf8.decode('${event.startTime}\n${event.price}'.codeUnits)),
+            isThreeLine: true,
+            onTap: () {
+              _launchURL(event.eventUrl);
+            },
+          );
         },
       );
-    },
-  );
 
   Widget _getTitleWidget(String text) {
     if (text.length > 25) {
