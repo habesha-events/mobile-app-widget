@@ -74,14 +74,19 @@ class EventListWidgetState extends State<EventListWidget> {
                       alignment: Alignment.bottomRight,
                       child: GestureDetector(
                         onTap: _sendEmail,
-                        child: Text(
-                          'Contact us',
-                          style: TextStyle(
-                            color: Colors.blue,
-                            decoration: TextDecoration.underline,
-                              fontWeight: FontWeight.bold
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 16.0, right: 16.0), // Add bottom and right padding
+                          child: Text(
+                            'Contact us',
+                            style: TextStyle(
+                              color: Colors.blue,
+                              fontWeight: FontWeight.bold, // Make the text bold
+                              decoration: TextDecoration.underline, // Underline the text
+                              fontSize: 20.0, // Increase the text size
+                            ),
                           ),
                         ),
+
                       ),
                     ),
                   ),
