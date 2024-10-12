@@ -79,6 +79,7 @@ class EventListWidgetState extends State<EventListWidget> {
                           style: TextStyle(
                             color: Colors.blue,
                             decoration: TextDecoration.underline,
+                              fontWeight: FontWeight.bold
                           ),
                         ),
                       ),
