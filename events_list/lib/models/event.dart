@@ -5,6 +5,7 @@ class Event {
   final String? startTime;
   final String? eventUrl;
   final String? price;
+  final String? city;
 
   Event({
     required this.position,
@@ -13,6 +14,7 @@ class Event {
     required this.startTime,
     required this.eventUrl,
     required this.price,
+    required this.city,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -23,6 +25,11 @@ class Event {
       startTime: json['start_time'],
       eventUrl: json['event_url'],
       price: json['price'],
+      city: json['city'],
     );
+  }
+
+  String? getPriceDisplayText(){
+    return price?.replaceAll("From", "");
   }
 }

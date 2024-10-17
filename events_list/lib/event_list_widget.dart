@@ -54,10 +54,10 @@ class EventListWidgetState extends State<EventListWidget> {
                         onChanged: (city) {
                           _fetchEvents(city: city);
                         }),
-                    provider.localResponse.response_type == "neighboring_cities"
-                        ? Text(
-                            'Showing events from ${provider.localResponse.city.replaceAll("[", "").replaceAll("]", "").replaceAll("'", "")}')
-                        : Container(),
+                    // provider.localResponse.response_type == "neighboring_cities"
+                    //     ? Text(
+                    //         'Showing events from ${provider.localResponse.city.replaceAll("[", "").replaceAll("]", "").replaceAll("'", "")}')
+                    //     : Container(),
                     Expanded(
                       child: _mainContentWidget(provider),
                     ),
@@ -123,7 +123,7 @@ class EventListWidgetState extends State<EventListWidget> {
                 })),
             title: _getTitleWidget(event.title ?? 'Event'),
             subtitle: Text(
-                utf8.decode('${event.startTime}\n${event.price}'.codeUnits)),
+                utf8.decode('${event.startTime} \n${event.getPriceDisplayText()} | ${event.city}'.codeUnits)),
             isThreeLine: true,
             onTap: () {
               _launchURL(event.eventUrl);
