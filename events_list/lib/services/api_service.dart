@@ -18,20 +18,15 @@ class ApiService {
     } else {
       var response = await _getResponse(city);
       if (response.statusCode == 200) {
-        var events = [];
-        var city = "";
-        var response_type = "";
+        List<dynamic> events = [];
 
         try{
-          Map<String, dynamic> json = jsonDecode(response.body.toString());
-          events = json["events"];
-          city = json["city"];
-          response_type = json["response_type"];
+          events = jsonDecode(response.body.toString());
         }catch(e){
           throw Exception('Failed to load events: parsing error: $e');
         }
 
-        return ApiResponse(events: events, city: city, response_type: response_type);
+        return ApiResponse(events: events,);
       } else {
         throw Exception('Failed to load events: statusCode: ${response.statusCode}');
       }
@@ -42,7 +37,7 @@ class ApiService {
     final response = await rootBundle.loadString('assets/events_api_response.json');
     Map<String, dynamic> json = jsonDecode(response);
     print("ApiService: loadFakeData $json");
-    return ApiResponse(events: json["events"], city:  json["city"], response_type: json["response_type"]);
+    return ApiResponse(events: json["events"]);
   }
 
   Future<http.Response> _getResponse(city) async {
@@ -54,7 +49,7 @@ class ApiService {
     while (retryCount < maxRetries) {
       try {
         response = await http.get(
-          Uri.parse('$baseUrl/events/get?city=$city'),
+          Uri.parse('$baseUrl/events/get_2?city=$city'),
           headers: {'Authorization': 'Bearer $token',
           },
         );

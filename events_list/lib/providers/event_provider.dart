@@ -7,7 +7,7 @@ import '../services/location_service.dart';
 
 class EventProvider with ChangeNotifier {
   ApiResponse get localResponse => _localResponse;
-  ApiResponse _localResponse = ApiResponse(events: [], city: "", response_type: "");
+  ApiResponse _localResponse = ApiResponse(events: []);
 
   String get inputCity => _inputCity;
   String _inputCity = "";
@@ -36,26 +36,23 @@ class EventProvider with ChangeNotifier {
     try {
       inputCity ??= await _locationService.getCityName();
       _inputCity = inputCity;
-      _setLocalResponseCity();
       final cachedEventsResponse = await _cacheService.getCachedEventsResponse(inputCity);
 
       if (cachedEventsResponse != null) {
         _localResponse = ApiResponse(
             events: cachedEventsResponse.events.map((event) => Event.fromJson(event)).toList(),
-            city: cachedEventsResponse.city,
-            response_type: cachedEventsResponse.response_type);
+       );
       } else {
         // cache has expired or empty, go fetch from api
         final apiResponse = await _apiService.getEvents(inputCity);
         _localResponse = ApiResponse(
             events: apiResponse.events.map((event) => Event.fromJson(event)).toList(),
-            city: apiResponse.city,
-            response_type: apiResponse.response_type);
-        await _cacheService.cacheEvents(inputCity, apiResponse.events, apiResponse.response_type, apiResponse.city);
+       );
+        await _cacheService.cacheEvents(inputCity, apiResponse.events);
       }
       print("EventProvider: providing ${_localResponse.events.length} events");
-    } catch (error) {
-      print("EventProvider: error=$error inputCity=$inputCity");
+    } catch (error, stackTrace) {
+      print("EventProvider: error=$error stackTrace=$stackTrace inputCity=$inputCity");
       _isError = true;
       _errorMessage = error.toString();
     }
@@ -64,11 +61,4 @@ class EventProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void _setLocalResponseCity() {
-    if(SUPPORTED_CITIES.contains(_inputCity)){
-      _localResponse.city = _inputCity;
-    }else{
-      _localResponse.city = defaultCity;
-    }
-  }
 }

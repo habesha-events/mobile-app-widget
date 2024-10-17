@@ -14,22 +14,8 @@ class CitySelectorWidget extends StatefulWidget {
 }
 
 class _CitySelectorWidgetState extends State<CitySelectorWidget> {
-  String? _selectedCity;
+  String? _selectedCity = SUPPORTED_CITIES[0];
 
-  @override
-  void initState() {
-    super.initState();
-    var localResponse = widget.provider.localResponse;
-
-    if ( localResponse.response_type == "neighboring_cities" ){
-      _selectedCity = localResponse.city
-          .split(",")[0]
-          .replaceAll("[", "") // split array string and take the middle one
-          .replaceAll("'", ""); // split array string and take the middle one
-    }else{
-      _selectedCity = localResponse.city;
-    }
-  }
 
   @override
   Widget build(BuildContext context) {

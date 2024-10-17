@@ -5,14 +5,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 class CacheService {
   static const cachePeriodMinutes = 24 * 60; // 24 hrs
 
-  Future<void> cacheEvents(String inputCity, List<dynamic> events, String response_type, String responseCity) async {
-    print("CacheService: cacheEvents: inputCity ${inputCity}, events.size ${events.length} response_type ${response_type} responseCity ${responseCity}");
+  Future<void> cacheEvents(String inputCity, List<dynamic> events) async {
+    print("CacheService: cacheEvents: inputCity ${inputCity}, events.size ${events.length} ");
     final prefs = await SharedPreferences.getInstance();
     final cacheData = {
-      'city': responseCity,
       'timestamp': DateTime.now().millisecondsSinceEpoch,
       'events': events,
-      'response_type': response_type
     };
     prefs.setString(inputCity, json.encode(cacheData));
   }
@@ -27,20 +25,10 @@ class CacheService {
       final currentCacheMilliSeconds = DateTime.now().millisecondsSinceEpoch - cacheData['timestamp'];
       if (currentCacheMilliSeconds < cachePeriodMinutes * 60 * 1000) {
         print("CacheService: getCachedEvents: inputCity ${inputCity} : currentCacheSeconds ${currentCacheMilliSeconds/1000}: returning cached data: $cacheData");
-        return ApiResponse(events: cacheData['events'], city: cacheData['city'], response_type: cacheData['response_type']);
+        return ApiResponse(events: cacheData['events']);
       }
     }
     print("CacheService: getCachedEvents: inputCity ${inputCity} : returning NULL!");
     return null;
   }
-  //
-  // Future<String?>   getCachedResponseType(String city) async {
-  //   final prefs = await SharedPreferences.getInstance();
-  //   final cacheString = prefs.getString(city+"-response_type");
-  //   if (cacheString != null) {
-  //     final cacheData = json.decode(cacheString);
-  //     return cacheData['response_type'];
-  //   }
-  //   return null;
-  // }
 }
