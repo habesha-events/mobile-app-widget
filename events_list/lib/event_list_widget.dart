@@ -18,6 +18,8 @@ class EventListWidget extends StatefulWidget {
 }
 
 class EventListWidgetState extends State<EventListWidget> {
+  ScrollController _scrollController = ScrollController();
+
   @override
   void initState() {
     super.initState();
@@ -65,32 +67,37 @@ class EventListWidgetState extends State<EventListWidget> {
                 ),
                 // Footer pinned to the bottom using Positioned
                 Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: GestureDetector(
-                        onTap: _sendEmail,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 16.0, right: 16.0), // Add bottom and right padding
-                          child: Text(
-                            'Contact us',
-                            style: TextStyle(
-                              color: Colors.blue,
-                              fontWeight: FontWeight.bold, // Make the text bold
-                              decoration: TextDecoration.underline, // Underline the text
-                              fontSize: 20.0, // Increase the text size
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      color: Colors.white, // Set the background color to gray
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: GestureDetector(
+                            onTap: _sendEmail,
+                            child: Padding(
+                              padding: const EdgeInsets.only(
+                                  bottom: 16.0, right: 16.0),
+                              // Add bottom and right padding
+                              child: Text(
+                                'Contact us',
+                                style: TextStyle(
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold,
+                                  // Make the text bold
+                                  decoration: TextDecoration.underline,
+                                  // Underline the text
+                                  fontSize: 20.0, // Increase the text size
+                                ),
+                              ),
                             ),
                           ),
                         ),
-
                       ),
-                    ),
-                  ),
-                ),
+                    )),
               ],
             ),
           ),
@@ -105,7 +112,12 @@ class EventListWidgetState extends State<EventListWidget> {
         : _listViewWidget(provider);
   }
 
-  Widget _listViewWidget(provider) => ListView.builder(
+  Widget _listViewWidget(provider) => Scrollbar(
+      controller: _scrollController,
+      // Assign the controller to the Scrollbar
+      thumbVisibility: true,
+      // Makes the scrollbar always visible
+      child: ListView.builder(
         itemCount: provider.localResponse.events.length,
         itemBuilder: (context, index) {
           final event = provider.localResponse.events[index];
@@ -122,15 +134,16 @@ class EventListWidgetState extends State<EventListWidget> {
                   );
                 })),
             title: _getTitleWidget(event.title ?? 'Event'),
-            subtitle: Text(
-                utf8.decode('${event.startTime} \n${event.getPriceDisplayText()} | ${event.city}'.codeUnits)),
+            subtitle: Text(utf8.decode(
+                '${event.startTime} \n${event.getPriceDisplayText()} | ${event.city}'
+                    .codeUnits)),
             isThreeLine: true,
             onTap: () {
               _launchURL(event.eventUrl);
             },
           );
         },
-      );
+      ));
 
   Widget _getTitleWidget(String text) {
     if (text.length > 25) {
