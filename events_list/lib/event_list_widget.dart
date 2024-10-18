@@ -119,6 +119,7 @@ class EventListWidgetState extends State<EventListWidget> {
       // Makes the scrollbar always visible
       child: ListView.builder(
         itemCount: provider.localResponse.events.length,
+        controller: _scrollController,
         itemBuilder: (context, index) {
           final event = provider.localResponse.events[index];
           return ListTile(
