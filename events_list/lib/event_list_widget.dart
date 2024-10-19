@@ -172,27 +172,49 @@ class EventListWidgetState extends State<EventListWidget> {
     }
   }
 
+
   Widget _rowWidget(event) {
-    return ListTile(
-      leading: SizedBox(
-          width: 120,
-          height: 80,
-          child: Image.network(event.imageUrl ?? 'imageUrl is null',
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            width: 120,
+            height: 80,
+            child: Image.network(
+              event.imageUrl ?? 'imageUrl is null',
               errorBuilder: (context, error, stackTrace) {
-                return SizedBox(
+                return const SizedBox(
                   width: 120,
                   height: 80,
-                  child: const Icon(Icons.image, size: 50),
+                  child: Icon(Icons.image, size: 50),
                 );
-              })),
-      title: _getTitleWidget(event.title ?? 'Event'),
-      subtitle: Text(utf8.decode(
-          '${event.startTime} \n${event.getPriceDisplayText()} | ${event.city}'
-              .codeUnits)),
-      isThreeLine: true,
-      onTap: () {
-        _launchURL(event.eventUrl);
-      },
+              },
+            ),
+          ),
+          const SizedBox(width: 10), // Spacing between image and text
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 6),
+                _getTitleWidget(event.title ?? 'Event'), // Handle null title
+                const SizedBox(height: 4), // Add small spacing between title and subtitle
+                Text(
+                  utf8.decode(
+                    '${event.startTime}\n${event.getPriceDisplayText()} | ${event.city ?? ''}'
+                        .codeUnits, // Handle null city
+                  ),
+                  style: const TextStyle(height: 1.5), // Adjust line height for better spacing
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
+
+
 }
