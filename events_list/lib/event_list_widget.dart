@@ -122,27 +122,7 @@ class EventListWidgetState extends State<EventListWidget> {
         controller: _scrollController,
         itemBuilder: (context, index) {
           final event = provider.localResponse.events[index];
-          return ListTile(
-            leading: SizedBox(
-                width: 120,
-                height: 80,
-                child: Image.network(event.imageUrl ?? 'imageUrl is null',
-                    errorBuilder: (context, error, stackTrace) {
-                  return SizedBox(
-                    width: 120,
-                    height: 80,
-                    child: const Icon(Icons.image, size: 50),
-                  );
-                })),
-            title: _getTitleWidget(event.title ?? 'Event'),
-            subtitle: Text(utf8.decode(
-                '${event.startTime} \n${event.getPriceDisplayText()} | ${event.city}'
-                    .codeUnits)),
-            isThreeLine: true,
-            onTap: () {
-              _launchURL(event.eventUrl);
-            },
-          );
+          return _rowWidget(event);
         },
       ));
 
@@ -190,5 +170,29 @@ class EventListWidgetState extends State<EventListWidget> {
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  Widget _rowWidget(event) {
+    return ListTile(
+      leading: SizedBox(
+          width: 120,
+          height: 80,
+          child: Image.network(event.imageUrl ?? 'imageUrl is null',
+              errorBuilder: (context, error, stackTrace) {
+                return SizedBox(
+                  width: 120,
+                  height: 80,
+                  child: const Icon(Icons.image, size: 50),
+                );
+              })),
+      title: _getTitleWidget(event.title ?? 'Event'),
+      subtitle: Text(utf8.decode(
+          '${event.startTime} \n${event.getPriceDisplayText()} | ${event.city}'
+              .codeUnits)),
+      isThreeLine: true,
+      onTap: () {
+        _launchURL(event.eventUrl);
+      },
+    );
   }
 }
