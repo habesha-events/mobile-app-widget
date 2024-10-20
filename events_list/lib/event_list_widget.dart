@@ -26,7 +26,7 @@ class EventListWidgetState extends State<EventListWidget> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(milliseconds: 10), () {
+    Future.delayed(const Duration(milliseconds: 5), () {
       // get current location and fetch:
       _fetchEvents();
     });

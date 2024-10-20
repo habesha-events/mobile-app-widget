@@ -5,11 +5,12 @@ List<String> SUPPORTED_CITIES = ['Washington, DC',
   'Addis Ababa',
   'Nairobi', 'Dubai',
   'Johannesburg', 'Minneapolis', 'Los Angeles', 'New York City', 'Seattle', 'Dallas', 'Atlanta', 'Denver', 'San Francisco', 'Boston', 'Houston', 'Chicago', 'San Diego', 'Philadelphia', 'Phoenix', 'Portland', 'Austin', 'Miami', 'Detroit', 'Baltimore', 'Toronto', 'Calgary', 'Edmonton', 'Vancouver', 'Montreal', 'Ottawa', 'Winnipeg', 'Hamilton', 'Kitchener', 'London', 'Halifax', 'Victoria', 'Quebec City', 'Surrey', 'Mississauga', 'Burnaby', 'Regina', 'Saskatoon', 'Windsor', 'Oshawa', 'London', 'Frankfurt', 'Stockholm', 'Rome', 'Amsterdam', 'Paris', 'Berlin', 'Oslo', 'Brussels', 'Copenhagen', 'Madrid', 'Vienna', 'Zurich', 'Munich', 'Lisbon', 'Helsinki', 'Dublin', 'Athens', 'Prague', 'Warsaw'];
-String defaultCity = 'Seattle';
 
 class LocationService {
+  String DEFAULT_CITY = 'Seattle';
+
   Future<String> getCityName() async {
-    var city = defaultCity;
+    var city = DEFAULT_CITY;
 
     try {
       final loc.Location location = loc.Location();
@@ -24,7 +25,7 @@ class LocationService {
         _serviceEnabled = await location.requestService();
         if (!_serviceEnabled) {
           // return Future.error('Location services are disabled.');
-          return defaultCity;
+          return DEFAULT_CITY;
         }
       }
 
@@ -36,7 +37,7 @@ class LocationService {
         _permissionGranted = await location.requestPermission();
         if (_permissionGranted != loc.PermissionStatus.granted) {
           // return Future.error('Location permissions are denied');
-          return defaultCity;
+          return DEFAULT_CITY;
         }
       }
       print(
