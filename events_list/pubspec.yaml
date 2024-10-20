@@ -30,3 +30,4 @@ flutter:
 
   assets:
     - assets/events_api_response.json
+    - assets/supported_cities_api_response.json
