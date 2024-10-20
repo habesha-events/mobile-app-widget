@@ -3,12 +3,11 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
-import 'location_service.dart';
 
 class ApiService {
   static const String BASE_URL = 'http://18.221.37.124';
   static const String TOKEN = 'yene_secret_qulf_42';
-  static const bool USE_LOCAL_JSON_API = true;
+  static const bool USE_LOCAL_JSON_API = kDebugMode && false;
 
   //returns jsonList
   Future<List<dynamic>> getEvents(String city) async {
