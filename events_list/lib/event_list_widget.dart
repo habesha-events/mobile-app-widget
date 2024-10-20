@@ -1,3 +1,4 @@
+import 'package:events_app/services/api_service.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
@@ -176,6 +177,7 @@ class EventListWidgetState extends State<EventListWidget> {
 
   Widget _rowWidget(Event event) {
     // print("_rowWidget ${event.toString()}");
+    var subTitleText = '${event.startTime}\n${event.getPriceDisplayText()} | ${event.city ?? ''}';
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Row(
@@ -204,10 +206,7 @@ class EventListWidgetState extends State<EventListWidget> {
                 _getTitleWidget(event.title ?? 'Event'), // Handle null title
                 const SizedBox(height: 4), // Add small spacing between title and subtitle
                 Text(
-                  utf8.decode(
-                    '${event.startTime}\n${event.getPriceDisplayText()} | ${event.city ?? ''}'
-                        .codeUnits, // Handle null city
-                  ),
+                  ApiService.USE_FAKE_DATA ? subTitleText :  utf8.decode(subTitleText.codeUnits),
                   style: const TextStyle(height: 1.5), // Adjust line height for better spacing
                 ),
               ],
