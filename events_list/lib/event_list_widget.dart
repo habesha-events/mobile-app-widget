@@ -211,7 +211,7 @@ class EventListWidgetState extends State<EventListWidget> {
                 _getTitleWidget(event.title ?? 'Event'), // Handle null title
                 const SizedBox(height: 4), // Add small spacing between title and subtitle
                 Text(
-                  ApiService.USE_LOCAL_JSON_API ? subTitleText :  utf8.decode(subTitleText.codeUnits),
+                  ApiService.USE_LOCAL_JSON_API_FOR_EVENTS ? subTitleText :  utf8.decode(subTitleText.codeUnits),
                   style: const TextStyle(height: 1.5), // Adjust line height for better spacing
                 ),
               ],
