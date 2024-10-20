@@ -92,7 +92,7 @@ class EventProvider with ChangeNotifier {
       }
     }
 
-    print("EventProvider: _getNearestSupportedCity=$nearestCity");
+    print("EventProvider: _getNearestSupportedCity=${nearestCity.toString()}");
     return nearestCity;
   }
 
