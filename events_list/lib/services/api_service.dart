@@ -33,13 +33,6 @@ class ApiService {
     }
   }
 
-  Future<ApiResponse> _loadFakeData() async {
-    final response = await rootBundle.loadString('assets/events_api_response.json');
-    List<dynamic> json = jsonDecode(response);
-    print("ApiService: loadFakeData $json");
-    return ApiResponse(events: json);
-  }
-
   Future<http.Response> _getResponse(city) async {
     http.Response? response;
     int retryCount = 0;
@@ -83,5 +76,13 @@ class ApiService {
       }
     }
     throw Exception('ApiService: _getResponse: This should never happen');
+  }
+
+
+  Future<ApiResponse> _loadFakeData() async {
+    final response = await rootBundle.loadString('assets/events_api_response.json');
+    List<dynamic> json = jsonDecode(response);
+    print("ApiService: loadFakeData $json");
+    return ApiResponse(events: json);
   }
 }
