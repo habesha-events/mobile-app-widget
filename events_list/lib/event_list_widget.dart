@@ -1,4 +1,5 @@
 import 'package:events_app/services/api_service.dart';
+import 'package:events_app/services/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
@@ -21,7 +22,7 @@ class EventListWidget extends StatefulWidget {
 
 class EventListWidgetState extends State<EventListWidget> {
   ScrollController _scrollController = ScrollController();
-  var provider;
+  late EventProvider provider;
   @override
   void initState() {
     super.initState();
@@ -29,12 +30,14 @@ class EventListWidgetState extends State<EventListWidget> {
     provider =  Provider.of<EventProvider>(context, listen: false);
 
     //fetch supported list if not fetched , with .doThen()
-
-    _fetchEvents();
+    provider.getSupportedCities().then((supportedCities){
+      SUPPORTED_CITIES = supportedCities;
+      _fetchEvents();
+    });
   }
 
   _fetchEvents({String? city = null}) {
-    provider.fetchEdvents(inputCity: city);
+    provider.fetchEvents(inputCity: city);
   }
 
   @override

@@ -62,14 +62,18 @@ class EventProvider with ChangeNotifier {
   }
 
 
-  //fetch from supported_cities_api, if failed default to SUPPORTED_CITIES_DEFAULT
   Future<List<String>> getSupportedCities() async {
-    final supportedList = await _apiService.getSupportedCitiesFromApi();
+    var supportedList = await _cacheService.getCachedSupportedCities();
     if(supportedList != null){
-      _cacheService.saveSupportedCitiesCache(supportedList);
       return supportedList;
     }else{
-      return SUPPORTED_CITIES_DEFAULT;
+      supportedList = await _apiService.getSupportedCitiesFromApi();
+      if(supportedList != null){
+        _cacheService.saveSupportedCitiesCache(supportedList);
+        return supportedList;
+      }else{
+        return SUPPORTED_CITIES_DEFAULT;
+      }
     }
   }
 
