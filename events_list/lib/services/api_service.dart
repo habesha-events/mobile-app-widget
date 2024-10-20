@@ -7,12 +7,13 @@ import 'package:http/http.dart' as http;
 class ApiService {
   static const String BASE_URL = 'http://18.221.37.124';
   static const String TOKEN = 'yene_secret_qulf_42';
-  static const bool USE_LOCAL_JSON_API = kDebugMode && false;
+  static const bool USE_LOCAL_JSON_API_FOR_EVENTS = kDebugMode && false;
+  static const bool USE_LOCAL_JSON_API_FOR_SUPPORTED_CITIES = true;
 
   //returns jsonList
   Future<List<dynamic>> getEvents(String city) async {
-    print("ApiService: getEvents: useFakeData=$USE_LOCAL_JSON_API, city=${city}");
-    if (USE_LOCAL_JSON_API) {
+    print("ApiService: getEvents: useFakeData=$USE_LOCAL_JSON_API_FOR_EVENTS, city=${city}");
+    if (USE_LOCAL_JSON_API_FOR_EVENTS) {
       return _loadEventsLocalJsonApiResponse();
     } else {
       var response = await _getApiResponse('$BASE_URL/events/get_2?city=$city');
@@ -34,7 +35,7 @@ class ApiService {
 
   //returns jsonList
   Future<List<dynamic>?> getSupportedCitiesFromApi() async {
-    if (USE_LOCAL_JSON_API) {
+    if (USE_LOCAL_JSON_API_FOR_SUPPORTED_CITIES) {
       return loadSupportedCitiesLocalJsonApiResponse();
     }else{
       var response = await _getApiResponse('$BASE_URL/cities/supported');
