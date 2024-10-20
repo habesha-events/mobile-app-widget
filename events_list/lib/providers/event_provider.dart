@@ -40,12 +40,12 @@ class EventProvider with ChangeNotifier {
 
       if (jsonList == null) {
         // cache has expired or empty, go fetch from api
-        var jsonList = await _apiService.getEvents(inputCity);
+        jsonList = await _apiService.getEvents(inputCity);
 
         // save in cache
         await _cacheService.saveEventsInCache(jsonList);
       }
-      _events = Events.fromJson(jsonList!);
+      _events = Events.fromJson(jsonList);
 
       print("EventProvider: providing ${_events.events.length} events");
     } catch (error, stackTrace) {
