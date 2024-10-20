@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:events_app/services/api_service.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +11,7 @@ import 'dart:convert';
 
 class EventListWidget extends StatefulWidget {
   final Function(String) onErrorCallback;
-  final Bool forceRefreshSupportedCities; // on FCM message
+  final bool forceRefreshSupportedCities; // on FCM message
 
   EventListWidget({
     required this.onErrorCallback,
