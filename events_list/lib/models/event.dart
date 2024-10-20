@@ -1,3 +1,6 @@
+import 'package:events_app/models/supported_city.dart';
+import 'package:geocoding/geocoding.dart';
+
 class Event {
   final String? position; // this is the id of the event
   final String? imageUrl;
@@ -6,6 +9,7 @@ class Event {
   final String? eventUrl;
   final String? price;
   final String? city;
+  Location? location; // "lat, long"
 
   Event({
     required this.position,
@@ -15,6 +19,7 @@ class Event {
     required this.eventUrl,
     required this.price,
     required this.city,
+    required this.location,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -26,6 +31,7 @@ class Event {
       eventUrl: json['event_url'],
       price: json['price'],
       city: json['city'],
+      location:  Location(latitude: 0, longitude: 0, timestamp:  DateTime.now())
     );
   }
 

@@ -52,8 +52,12 @@ class EventProvider with ChangeNotifier {
         // save in cache
         await _cacheService.saveEventsInCache(eventsJsonList);
       }
-      // todo sort
       _events = Events.fromJson(eventsJsonList);
+
+      //1. set location data in events model : todo move to backend
+      _populateEventsLocation();
+      //2. sort
+      _sortEventsByDistance();
 
       print("EventProvider: providing ${_events.events.length} events");
     } catch (error, stackTrace) {
@@ -103,8 +107,7 @@ class EventProvider with ChangeNotifier {
   }
 
   // Haversine's formula to calculate distance between two lat/lng points in kilometers
-  double _calculateDistance(double lat1, double lng1, double lat2,
-      double lng2) {
+  double _calculateDistance(double lat1, double lng1, double lat2, double lng2) {
     const double radiusOfEarth = 6371; // Earth's radius in kilometers
 
     double dLat = _degreesToRadians(lat2 - lat1);
@@ -123,4 +126,47 @@ class EventProvider with ChangeNotifier {
     return degrees * pi / 180;
   }
 
+
+
+// Function to populate the location field of events
+  void _populateEventsLocation() {
+    List<Event> populatedEvents = [];
+    for (var event in  _events.events) {
+      // Find the matching supported city for the event's city
+      final matchingSupportedCity = SUPPORTED_CITIES.firstWhere(
+            (supportedCity) => supportedCity.city == event.city,
+        orElse: () => SupportedCity(city: '', country: '', location: Location(latitude: 0, longitude: 0, timestamp:  DateTime.now())),
+      );
+
+      // Populate the location if a matching city is found
+      if (matchingSupportedCity.city.isNotEmpty) {
+        event.location = matchingSupportedCity.location;
+        populatedEvents.add(event);
+      }
+    }
+    _events.events = populatedEvents;
+  }
+
+  // Function to sort events based on proximity to input location
+    _sortEventsByDistance() {
+      final inputSupportedCity = SUPPORTED_CITIES.firstWhere(
+            (supportedCity) => supportedCity.city == _inputCity,
+        orElse: () => SupportedCity(city: '', country: '', location: Location(latitude: 0, longitude: 0, timestamp:  DateTime.now())),
+      );
+      Location inputLocation = inputSupportedCity.location;
+
+    // Sort the events list by distance to the input location
+    _events.events.sort((event1, event2) {
+
+      // Calculate distances
+      double distance1 = _calculateDistance(inputLocation.latitude, inputLocation.longitude,
+          event1.location!.latitude, event1.location!.longitude);
+      double distance2 = _calculateDistance(inputLocation.latitude, inputLocation.longitude,
+          event2.location!.latitude, event2.location!.longitude);
+
+      // Sort by distance (ascending)
+      return distance1.compareTo(distance2);
+    });
+
+  }
 }

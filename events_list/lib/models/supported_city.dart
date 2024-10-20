@@ -4,7 +4,7 @@ import 'package:geocoding/geocoding.dart';
 class SupportedCity {
   final String city;
   final String country;
-  final Location location;
+  final Location location; // "lat, long"
 
   SupportedCity({
     required this.city,
