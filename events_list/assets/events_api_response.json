@@ -1,127 +1,112 @@
-{
-  "city": "Washington, DC",
-  "events": [
-    {
-      "event_id": 6,
-      "start_time": "Sun, Sep 22 •  2:00 PM",
-      "price": "From $85.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F810411629%2F1570622299583%2F1%2Foriginal.20240229-201942?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C511%2C3024%2C1512&s=08aa48facf8a6dbcd441e827eacf044a",
-      "created_at": "2024-09-03T22:38:04.822066",
-      "event_title": "Habesha Event",
-      "location": "Lebanese Taverna Market",
-      "event_url": "https://www.eventbrite.com/e/cooking-class-simit-sunday-levantine-brunch-tickets-951004017617?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 7,
-      "start_time": null,
-      "price": null,
-      "image_url": null,
-      "created_at": "2024-09-03T22:38:04.832766",
-      "event_title": "Habesha Event",
-      "location": null,
-      "event_url": null,
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 8,
-      "start_time": "Fri, Sep 27 •  8:00 PM",
-      "price": "From $10.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F838235699%2F904171674283%2F1%2Foriginal.20240830-192001?crop=focalpoint&fit=crop&w=382&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.511363636364&fp-y=0.209476309227&s=5545757c117fe29ce9002c966db72bca",
-      "created_at": "2024-09-03T22:38:04.841513",
-      "event_title": "Habesha Event",
-      "location": "Miracle Theatre",
-      "event_url": "https://www.eventbrite.com/e/magician-brice-harney-washington-dc-tickets-995353578347?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 9,
-      "start_time": "Wed, Oct 2 •  8:00 PM",
-      "price": "From $18.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F821601249%2F24431834%2F1%2Foriginal.20240806-163005?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C33%2C1640%2C820&s=ce9ced862d475b1c6d04fce8f78f2135",
-      "created_at": "2024-09-03T22:38:04.850433",
-      "event_title": "Habesha Event",
-      "location": "Washington Hebrew Congregation",
-      "event_url": "https://www.eventbrite.com/e/2024-high-holy-days-with-2239-tickets-977187964507?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 10,
-      "start_time": "Wed, Sep 18 •  7:00 PM",
-      "price": "From $0.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F824155159%2F753139337063%2F1%2Foriginal.20240809-195820?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=844f91dd965af317246b476ed1ea403e",
-      "created_at": "2024-09-03T22:38:04.858847",
-      "event_title": "Habesha Event",
-      "location": "East City Bookshop",
-      "event_url": "https://www.eventbrite.com/e/hybrid-event-jessica-elisheva-emerson-olive-days-tickets-984184110167?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 11,
-      "start_time": "Fri, Sep 13 •  6:30 PM",
-      "price": "From $30.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F838585889%2F1123660082973%2F1%2Foriginal.20240831-142531?w=200&auto=format%2Ccompress&q=75&sharp=10&s=067f74e6aa5d403e5d419facf50e2caa",
-      "created_at": "2024-09-03T22:38:04.867354",
-      "event_title": "Habesha Event",
-      "location": "6408 Edsall Rd",
-      "event_url": "https://www.eventbrite.com/e/harmony-for-humanity-tickets-1005831347637?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 12,
-      "start_time": "Tomorrow • 7:00 PM + 19 more",
-      "price": "From $22.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F807004869%2F401230378023%2F1%2Foriginal.20240712-235920?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=4%2C0%2C582%2C291&s=700ad7fea874aa8c94cddeed2ff09c97",
-      "created_at": "2024-09-03T22:38:04.877292",
-      "event_title": "Habesha Event",
-      "location": "Temple Mother Earth",
-      "event_url": "https://www.eventbrite.com/e/hape-circle-tickets-946929721287?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 13,
-      "start_time": "Mon, Oct 7 •  7:00 PM",
-      "price": "From $21.99",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F827732719%2F265651636007%2F1%2Foriginal.20240815-154438?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C1200%2C600&s=e1b8db38b548584182892bc5e8c5d60c",
-      "created_at": "2024-09-03T22:38:04.885693",
-      "event_title": "Habesha Event",
-      "location": "Politics and Prose Bookstore",
-      "event_url": "https://www.eventbrite.com/e/sabaa-tahir-heir-in-conversation-with-elizabeth-acevedo-tickets-943824513527?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 14,
-      "start_time": "Sun, Sep 15 •  9:00 AM",
-      "price": "From $0.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F761791439%2F81778015843%2F1%2Foriginal.20240507-173515?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=299%2C715%2C3640%2C1820&s=9e52c64b9a6fc09aabf59b06c556154b",
-      "created_at": "2024-09-03T22:38:04.896352",
-      "event_title": "Habesha Event",
-      "location": "Kenilworth Aquatic Gardens",
-      "event_url": "https://www.eventbrite.com/e/yoga-with-kahlil-915-tickets-1000155922287?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 15,
-      "start_time": "Tue, Sep 24 •  5:30 PM",
-      "price": "From $35.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F836331989%2F735684119903%2F1%2Foriginal.png?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C940%2C470&s=fe789967d2e321ecd4703655c5ed9c79",
-      "created_at": "2024-09-03T22:38:04.907386",
-      "event_title": "Habesha Event",
-      "location": "Cork & Fork LLC",
-      "event_url": "https://www.eventbrite.com/e/taste-and-nibble-with-ashes-diamonds-winery-napa-valley-tickets-1003893010017?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    },
-    {
-      "event_id": 16,
-      "start_time": "Sun, Sep 22 •  7:00 PM",
-      "price": "From $0.00",
-      "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F817615019%2F297589446607%2F1%2Foriginal.20240731-024000?w=400&auto=format%2Ccompress&q=75&sharp=10&s=f7fcd7c2877f990277edfbdd0ea6db1f",
-      "created_at": "2024-09-03T22:38:04.918028",
-      "event_title": "Habesha Event",
-      "location": "Washington Hebrew Congregation",
-      "event_url": "https://www.eventbrite.com/e/eyewitness-to-atrocity-tickets-967227893667?aff=ebdssbdestsearch",
-      "city": "Washington, DC"
-    }
-  ],
-  "response_type": "current_city"
-}
+[
+  {
+    "Position": "6",
+    "start_time": "Sun, Sep 22 •  2:00 PM",
+    "price": "From $85.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F810411629%2F1570622299583%2F1%2Foriginal.20240229-201942?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C511%2C3024%2C1512&s=08aa48facf8a6dbcd441e827eacf044a",
+    "created_at": "2024-09-03T22:38:04.822066",
+    "event_title": "Habesha Event",
+    "location": "Lebanese Taverna Market",
+    "event_url": "https://www.eventbrite.com/e/cooking-class-simit-sunday-levantine-brunch-tickets-951004017617?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "8",
+    "start_time": "Fri, Sep 27 •  8:00 PM",
+    "price": "From $10.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F838235699%2F904171674283%2F1%2Foriginal.20240830-192001?crop=focalpoint&fit=crop&w=382&auto=format%2Ccompress&q=75&sharp=10&fp-x=0.511363636364&fp-y=0.209476309227&s=5545757c117fe29ce9002c966db72bca",
+    "created_at": "2024-09-03T22:38:04.841513",
+    "event_title": "Habesha Event",
+    "location": "Miracle Theatre",
+    "event_url": "https://www.eventbrite.com/e/magician-brice-harney-washington-dc-tickets-995353578347?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "9",
+    "start_time": "Wed, Oct 2 •  8:00 PM",
+    "price": "From $18.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F821601249%2F24431834%2F1%2Foriginal.20240806-163005?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C33%2C1640%2C820&s=ce9ced862d475b1c6d04fce8f78f2135",
+    "created_at": "2024-09-03T22:38:04.850433",
+    "event_title": "Habesha Event",
+    "location": "Washington Hebrew Congregation",
+    "event_url": "https://www.eventbrite.com/e/2024-high-holy-days-with-2239-tickets-977187964507?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "10",
+    "start_time": "Wed, Sep 18 •  7:00 PM",
+    "price": "From $0.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F824155159%2F753139337063%2F1%2Foriginal.20240809-195820?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C2160%2C1080&s=844f91dd965af317246b476ed1ea403e",
+    "created_at": "2024-09-03T22:38:04.858847",
+    "event_title": "Habesha Event",
+    "location": "East City Bookshop",
+    "event_url": "https://www.eventbrite.com/e/hybrid-event-jessica-elisheva-emerson-olive-days-tickets-984184110167?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "11",
+    "start_time": "Fri, Sep 13 •  6:30 PM",
+    "price": "From $30.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F838585889%2F1123660082973%2F1%2Foriginal.20240831-142531?w=200&auto=format%2Ccompress&q=75&sharp=10&s=067f74e6aa5d403e5d419facf50e2caa",
+    "created_at": "2024-09-03T22:38:04.867354",
+    "event_title": "Habesha Event",
+    "location": "6408 Edsall Rd",
+    "event_url": "https://www.eventbrite.com/e/harmony-for-humanity-tickets-1005831347637?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "12",
+    "start_time": "Tomorrow • 7:00 PM + 19 more",
+    "price": "From $22.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F807004869%2F401230378023%2F1%2Foriginal.20240712-235920?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=4%2C0%2C582%2C291&s=700ad7fea874aa8c94cddeed2ff09c97",
+    "created_at": "2024-09-03T22:38:04.877292",
+    "event_title": "Habesha Event",
+    "location": "Temple Mother Earth",
+    "event_url": "https://www.eventbrite.com/e/hape-circle-tickets-946929721287?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "13",
+    "start_time": "Mon, Oct 7 •  7:00 PM",
+    "price": "From $21.99",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F827732719%2F265651636007%2F1%2Foriginal.20240815-154438?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C1200%2C600&s=e1b8db38b548584182892bc5e8c5d60c",
+    "created_at": "2024-09-03T22:38:04.885693",
+    "event_title": "Habesha Event",
+    "location": "Politics and Prose Bookstore",
+    "event_url": "https://www.eventbrite.com/e/sabaa-tahir-heir-in-conversation-with-elizabeth-acevedo-tickets-943824513527?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "14",
+    "start_time": "Sun, Sep 15 •  9:00 AM",
+    "price": "From $0.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F761791439%2F81778015843%2F1%2Foriginal.20240507-173515?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=299%2C715%2C3640%2C1820&s=9e52c64b9a6fc09aabf59b06c556154b",
+    "created_at": "2024-09-03T22:38:04.896352",
+    "event_title": "Habesha Event",
+    "location": "Kenilworth Aquatic Gardens",
+    "event_url": "https://www.eventbrite.com/e/yoga-with-kahlil-915-tickets-1000155922287?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "15",
+    "start_time": "Tue, Sep 24 •  5:30 PM",
+    "price": "From $35.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F836331989%2F735684119903%2F1%2Foriginal.png?w=512&auto=format%2Ccompress&q=75&sharp=10&rect=0%2C0%2C940%2C470&s=fe789967d2e321ecd4703655c5ed9c79",
+    "created_at": "2024-09-03T22:38:04.907386",
+    "event_title": "Habesha Event",
+    "location": "Cork & Fork LLC",
+    "event_url": "https://www.eventbrite.com/e/taste-and-nibble-with-ashes-diamonds-winery-napa-valley-tickets-1003893010017?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  },
+  {
+    "Position": "16",
+    "start_time": "Sun, Sep 22 •  7:00 PM",
+    "price": "From $0.00",
+    "image_url": "https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F817615019%2F297589446607%2F1%2Foriginal.20240731-024000?w=400&auto=format%2Ccompress&q=75&sharp=10&s=f7fcd7c2877f990277edfbdd0ea6db1f",
+    "created_at": "2024-09-03T22:38:04.918028",
+    "event_title": "Habesha Event",
+    "location": "Washington Hebrew Congregation",
+    "event_url": "https://www.eventbrite.com/e/eyewitness-to-atrocity-tickets-967227893667?aff=ebdssbdestsearch",
+    "city": "Washington, DC"
+  }
+]

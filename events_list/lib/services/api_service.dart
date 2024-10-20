@@ -9,11 +9,11 @@ import 'location_service.dart';
 
 class ApiService {
   static const String baseUrl = 'http://18.221.37.124';
-  static const bool useFakeData = kDebugMode && false;
+  static const bool USE_FAKE_DATA = kDebugMode && false;
 
   Future<ApiResponse> getEvents(String city) async {
-    print("ApiService: getEvents: useFakeData=$useFakeData, city=${city}");
-    if (useFakeData) {
+    print("ApiService: getEvents: useFakeData=$USE_FAKE_DATA, city=${city}");
+    if (USE_FAKE_DATA) {
       return _loadFakeData();
     } else {
       var response = await _getResponse(city);
@@ -35,9 +35,9 @@ class ApiService {
 
   Future<ApiResponse> _loadFakeData() async {
     final response = await rootBundle.loadString('assets/events_api_response.json');
-    Map<String, dynamic> json = jsonDecode(response);
+    List<dynamic> json = jsonDecode(response);
     print("ApiService: loadFakeData $json");
-    return ApiResponse(events: json["events"]);
+    return ApiResponse(events: json);
   }
 
   Future<http.Response> _getResponse(city) async {

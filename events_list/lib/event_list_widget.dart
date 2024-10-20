@@ -3,6 +3,7 @@ import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'city_selector_widget.dart';
+import 'models/event.dart';
 import 'providers/event_provider.dart';
 import 'dart:convert';
 
@@ -173,7 +174,8 @@ class EventListWidgetState extends State<EventListWidget> {
   }
 
 
-  Widget _rowWidget(event) {
+  Widget _rowWidget(Event event) {
+    // print("_rowWidget ${event.toString()}");
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
       child: Row(

@@ -32,4 +32,10 @@ class Event {
   String? getPriceDisplayText(){
     return price?.replaceAll("From", "");
   }
+
+  @override
+  String toString() {
+    return 'Event{position: $position, imageUrl: $imageUrl, title: $title, startTime: $startTime, price: $price}';
+  }
+
 }
