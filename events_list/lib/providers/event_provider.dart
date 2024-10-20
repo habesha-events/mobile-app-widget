@@ -59,9 +59,9 @@ class EventProvider with ChangeNotifier {
   }
 
 
-  Future<SupportedCities> getSupportedCities() async {
+  Future<SupportedCities> getSupportedCities(forceRefreshSupportedCities) async {
     var jsonList = await _cacheService.getCachedSupportedCities();
-    if(jsonList == null){
+    if(jsonList == null || forceRefreshSupportedCities){
       jsonList = await _apiService.getSupportedCitiesFromApi();
       if(jsonList != null){
         _cacheService.saveSupportedCitiesCache(jsonList);

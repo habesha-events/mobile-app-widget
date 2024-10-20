@@ -1,5 +1,6 @@
+import 'dart:ffi';
+
 import 'package:events_app/services/api_service.dart';
-import 'package:events_app/services/location_service.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
@@ -11,9 +12,11 @@ import 'dart:convert';
 
 class EventListWidget extends StatefulWidget {
   final Function(String) onErrorCallback;
+  final Bool forceRefreshSupportedCities; // on FCM message
 
   EventListWidget({
     required this.onErrorCallback,
+    required this.forceRefreshSupportedCities,
   });
 
   @override
@@ -30,7 +33,7 @@ class EventListWidgetState extends State<EventListWidget> {
     provider =  Provider.of<EventProvider>(context, listen: false);
 
     //fetch supported list if not fetched , with .doThen()
-    provider.getSupportedCities().then((supportedCities){
+    provider.getSupportedCities(widget.forceRefreshSupportedCities).then((supportedCities){
       SUPPORTED_CITIES = supportedCities.supportedCities;
       _fetchEvents();
     });
