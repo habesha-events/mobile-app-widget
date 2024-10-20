@@ -28,21 +28,22 @@ class CacheService {
     prefs.setString(PREF_KEY_SUPPORTED_CITIES, json.encode(cacheData));
   }
 
-  Future<Events?> getCachedEventsResponse() async {
+  //returns jsonList
+  Future<List<dynamic>?> getCachedEventsResponse() async {
     final cacheString = prefs.getString(PREF_KEY_EVENTS);
     if (cacheString != null) {
       final cacheData = json.decode(cacheString);
       final currentCacheMilliSeconds = DateTime.now().millisecondsSinceEpoch - cacheData['timestamp'];
       if (currentCacheMilliSeconds < CACHE_PERIOD_MINUTES * 60 * 1000) {
         print("CacheService: getCachedEventsResponse: currentCacheSeconds ${currentCacheMilliSeconds/1000}: returning cached data: $cacheData");
-        return Events.fromJson(cacheData['events']);
+        return cacheData['events'];
       }
     }
     print("CacheService: getCachedEventsResponse: returning NULL!");
     return null;
   }
 
-
+  //returns jsonList
   Future<List<dynamic>?> getCachedSupportedCities() async {
     final cacheString = prefs.getString(PREF_KEY_SUPPORTED_CITIES);
     if (cacheString != null) {

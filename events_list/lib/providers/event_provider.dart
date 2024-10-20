@@ -36,18 +36,17 @@ class EventProvider with ChangeNotifier {
     try {
       inputCity ??= await _locationService.getCityName();
       _inputCity = inputCity;
-      final events = await _cacheService.getCachedEventsResponse();
+      var jsonList = await _cacheService.getCachedEventsResponse();
 
-      if (events != null) {
-        _events = events;
-      } else {
+      if (jsonList == null) {
         // cache has expired or empty, go fetch from api
         var jsonList = await _apiService.getEvents(inputCity);
-        _events = Events.fromJson(jsonList);
 
         // save in cache
         await _cacheService.saveEventsInCache(jsonList);
       }
+      _events = Events.fromJson(jsonList!);
+
       print("EventProvider: providing ${_events.events.length} events");
     } catch (error, stackTrace) {
       print("EventProvider: error=$error stackTrace=$stackTrace inputCity=$inputCity");
