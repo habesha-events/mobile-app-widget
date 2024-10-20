@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
 
+import 'location_service.dart';
+
 class ApiService {
   static const String BASE_URL = 'http://18.221.37.124';
   static const String TOKEN = 'yene_secret_qulf_42';
@@ -22,17 +24,42 @@ class ApiService {
         try{
           events = jsonDecode(response.body.toString());
         }catch(e){
-          throw Exception('Failed to load events: parsing error: $e');
+          throw Exception('ApiService: getEvents: Failed to load events: parsing error: $e');
         }
 
         return ApiResponse(events: events,);
       } else {
-        throw Exception('Failed to load events: statusCode: ${response.statusCode}');
+        throw Exception('ApiService: getEvents: Failed to load events: statusCode: ${response.statusCode}');
       }
     }
   }
 
-  Future<http.Response> _getApiResponse(fullUrl) async {
+
+  Future<List<String>?> getSupportedCitiesFromApi() async {
+    if (USE_FAKE_DATA) {
+      return SUPPORTED_CITIES_DEFAULT;
+    }else{
+      var response = await _getApiResponse('$BASE_URL/cities/supported');
+      if (response.statusCode == 200) {
+        List<String> supportedCities = [];
+
+        try{
+          supportedCities = jsonDecode(response.body.toString());
+        }catch(e){
+          throw Exception('ApiService: getSupportedCitiesFromApi: parsing error: $e');
+        }
+
+        return supportedCities;
+      } else {
+        print('ApiService: getSupportedCitiesFromApi: Failed to SupportedCities: statusCode: ${response.statusCode}: returning SUPPORTED_CITIES_DEFAULT');
+        return null;
+      }
+    }
+
+  }
+
+
+    Future<http.Response> _getApiResponse(fullUrl) async {
     http.Response? response;
     int retryCount = 0;
     const maxRetries = 3;

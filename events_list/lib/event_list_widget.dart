@@ -21,20 +21,20 @@ class EventListWidget extends StatefulWidget {
 
 class EventListWidgetState extends State<EventListWidget> {
   ScrollController _scrollController = ScrollController();
-
+  var provider;
   @override
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(milliseconds: 5), () {
-      // get current location and fetch:
-      _fetchEvents();
-    });
+    provider =  Provider.of<EventProvider>(context, listen: false);
+
+    //fetch supported list if not fetched , with .doThen()
+
+    _fetchEvents();
   }
 
   _fetchEvents({String? city = null}) {
-    Provider.of<EventProvider>(context, listen: false)
-        .fetchEvents(inputCity: city);
+    provider.fetchEdvents(inputCity: city);
   }
 
   @override

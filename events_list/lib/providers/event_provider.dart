@@ -26,7 +26,7 @@ class EventProvider with ChangeNotifier {
   final CacheService _cacheService = CacheService();
   final LocationService _locationService = LocationService();
 
-  Future<void> fetchEvents({String? inputCity}) async {
+  Future<void> fetchEvents({String? inputCity = null}) async {
     _loading = true;
     _isError = false;
     _errorMessage = "";
@@ -61,4 +61,16 @@ class EventProvider with ChangeNotifier {
     notifyListeners();
   }
 
-}
+
+  //fetch from supported_cities_api, if failed default to SUPPORTED_CITIES_DEFAULT
+  Future<List<String>> getSupportedCities() async {
+    final supportedList = await _apiService.getSupportedCitiesFromApi();
+    if(supportedList != null){
+      _cacheService.saveSupportedCitiesCache(supportedList);
+      return supportedList;
+    }else{
+      return SUPPORTED_CITIES_DEFAULT;
+    }
+  }
+
+  }
