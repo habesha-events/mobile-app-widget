@@ -9,6 +9,8 @@ import 'models/event.dart';
 import 'providers/event_provider.dart';
 import 'dart:convert';
 
+import 'services/location_service.dart';
+
 class EventListWidget extends StatefulWidget {
   final Function(String) onErrorCallback;
   final bool forceRefreshSupportedCities; // on FCM message
