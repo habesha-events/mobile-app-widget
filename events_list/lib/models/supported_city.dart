@@ -16,9 +16,23 @@ class SupportedCity {
     return SupportedCity(
       city: json['city'],
       country: json['country'],
-      location: json['location'],
+      location: parseLocationFromString(json['location']),
     );
   }
+
+
+ static Location parseLocationFromString(String locationString) {
+    // Split the string by comma and trim whitespace
+    final parts = locationString.split(',').map((part) => part.trim()).toList();
+
+    // Extract latitude and longitude
+    final latitude = double.parse(parts[0]);
+    final longitude = double.parse(parts[1]);
+
+    // Create a Location object
+    return Location(latitude: latitude, longitude: longitude, timestamp: DateTime.now());
+  }
+
 }
 
 class SupportedCities {

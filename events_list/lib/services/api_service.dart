@@ -113,7 +113,7 @@ class ApiService {
   Future<List<dynamic>> loadSupportedCitiesLocalJsonApiResponse() async {
     final response = await rootBundle.loadString('assets/supported_cities_api_response.json');
     List<dynamic> jsonList = jsonDecode(response);
-    print("ApiService: _loadFakeSupportedCitiesResponse $json");
+    print("ApiService: loadSupportedCitiesLocalJsonApiResponse $json");
     return jsonList;
   }
 }
