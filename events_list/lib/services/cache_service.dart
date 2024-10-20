@@ -8,13 +8,9 @@ class CacheService {
   static const PREF_KEY_EVENTS = "PREF_KEY_EVENTS";
   static const PREF_KEY_SUPPORTED_CITIES = "PREF_KEY_SUPPORTED_CITIES";
 
-  var prefs;
-  CacheService(){
-    prefs = SharedPreferences.getInstance();
-  }
-
   Future<void> saveEventsInCache(List<dynamic> events) async {
     print("CacheService: saveEventsInCache: events.size ${events.length} ");
+    final prefs = await SharedPreferences.getInstance();
     final cacheData = {
       'timestamp': DateTime.now().millisecondsSinceEpoch,
       'events': events,
@@ -24,12 +20,14 @@ class CacheService {
 
   Future<void> saveSupportedCitiesCache(List<dynamic> supportedCities) async {
     print("CacheService: saveSupportedCitiesCache: supportedCities.size ${supportedCities.length} ");
+    final prefs = await SharedPreferences.getInstance();
     final cacheData = supportedCities.toString();
     prefs.setString(PREF_KEY_SUPPORTED_CITIES, json.encode(cacheData));
   }
 
   //returns jsonList
   Future<List<dynamic>?> getCachedEventsResponse() async {
+    final prefs = await SharedPreferences.getInstance();
     final cacheString = prefs.getString(PREF_KEY_EVENTS);
     if (cacheString != null) {
       final cacheData = json.decode(cacheString);
@@ -45,6 +43,7 @@ class CacheService {
 
   //returns jsonList
   Future<List<dynamic>?> getCachedSupportedCities() async {
+    final prefs = await SharedPreferences.getInstance();
     final cacheString = prefs.getString(PREF_KEY_SUPPORTED_CITIES);
     if (cacheString != null) {
       final cacheData = json.decode(cacheString);
