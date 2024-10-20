@@ -36,7 +36,7 @@ class EventProvider with ChangeNotifier {
     try {
       inputCity ??= await _locationService.getCityName();
       _inputCity = inputCity;
-      final cachedEventsResponse = await _cacheService.getCachedEventsResponse(inputCity);
+      final cachedEventsResponse = await _cacheService.getCachedEventsResponse();
 
       if (cachedEventsResponse != null) {
         _localResponse = ApiResponse(
@@ -48,7 +48,7 @@ class EventProvider with ChangeNotifier {
         _localResponse = ApiResponse(
             events: apiResponse.events.map((event) => Event.fromJson(event)).toList(),
        );
-        await _cacheService.cacheEvents(inputCity, apiResponse.events);
+        await _cacheService.saveEventsInCache(apiResponse.events);
       }
       print("EventProvider: providing ${_localResponse.events.length} events");
     } catch (error, stackTrace) {
