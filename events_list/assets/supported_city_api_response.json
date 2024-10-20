@@ -1,0 +1,52 @@
+[
+  {
+    "city": "Washington, DC",
+    "country": "USA",
+    "location": "38.8951, -77.0364"
+  },
+  {
+    "city": "Addis Ababa",
+    "country": "Ethiopia",
+    "location": "9.0054, 38.7636"
+  },
+  {
+    "city": "Nairobi",
+    "country": "Kenya",
+    "location": "-1.2921, 36.8219"
+  },
+  {
+    "city": "Dubai",
+    "country": "UAE",
+    "location": "25.276987, 55.296249"
+  },
+  {
+    "city": "Johannesburg",
+    "country": "South Africa",
+    "location": "-26.2041, 28.0473"
+  },
+  {
+    "city": "Minneapolis",
+    "country": "USA",
+    "location": "44.9778, -93.2650"
+  },
+  {
+    "city": "Los Angeles",
+    "country": "USA",
+    "location": "34.0522, -118.2437"
+  },
+  {
+    "city": "New York City",
+    "country": "USA",
+    "location": "40.7128, -74.0060"
+  },
+  {
+    "city": "Seattle",
+    "country": "USA",
+    "location": "47.6062, -122.3321"
+  },
+  {
+    "city": "Dallas",
+    "country": "USA",
+    "location": "32.7767, -96.7970"
+  }
+]
