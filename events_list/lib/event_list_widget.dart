@@ -64,7 +64,8 @@ class EventListWidgetState extends State<EventListWidget> {
                         provider: provider,
                         onChanged: (city) {
                           _fetchEvents(city: city);
-                        }),
+                        },
+                    inputCity: provider.inputCity,),
                     // provider.localResponse.response_type == "neighboring_cities"
                     //     ? Text(
                     //         'Showing events from ${provider.localResponse.city.replaceAll("[", "").replaceAll("]", "").replaceAll("'", "")}')

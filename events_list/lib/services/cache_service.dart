@@ -18,12 +18,6 @@ class CacheService {
     prefs.setString(PREF_KEY_EVENTS, json.encode(cacheData));
   }
 
-  Future<void> saveSupportedCitiesCache(List<dynamic> supportedCities) async {
-    print("CacheService: saveSupportedCitiesCache: supportedCities.size ${supportedCities.length} ");
-    final prefs = await SharedPreferences.getInstance();
-    final cacheData = supportedCities.toString();
-    prefs.setString(PREF_KEY_SUPPORTED_CITIES, json.encode(cacheData));
-  }
 
   //returns jsonList
   Future<List<dynamic>?> getCachedEventsResponse() async {
@@ -41,12 +35,20 @@ class CacheService {
     return null;
   }
 
+  Future<void> saveSupportedCitiesCache(List<dynamic> supportedCities) async {
+    print("CacheService: saveSupportedCitiesCache: supportedCities.size ${supportedCities.length} ");
+    final prefs = await SharedPreferences.getInstance();
+    final cacheData = supportedCities;
+    prefs.setString(PREF_KEY_SUPPORTED_CITIES, json.encode(cacheData));
+  }
+
   //returns jsonList
   Future<List<dynamic>?> getCachedSupportedCities() async {
     final prefs = await SharedPreferences.getInstance();
     final cacheString = prefs.getString(PREF_KEY_SUPPORTED_CITIES);
     if (cacheString != null) {
-      final cacheData = json.decode(cacheString);
+      final cacheData = jsonDecode(cacheString);
+      print("CacheService: getCachedSupportedCities: $cacheData");
       return cacheData;
     }
     print("CacheService: getCachedSupportedCities: returning NULL!");

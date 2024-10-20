@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:geocoding/geocoding.dart';
 import '../models/event.dart';
 import '../models/supported_city.dart';
 import '../services/api_service.dart';
@@ -9,6 +10,9 @@ import 'dart:math';
 class EventProvider with ChangeNotifier {
   Events get events => _events;
   Events _events = Events(events: []);
+
+  String get inputCity => _inputCity;
+  String _inputCity= '';
 
   bool get loading => _loading;
   bool _loading = false;
@@ -33,16 +37,17 @@ class EventProvider with ChangeNotifier {
 
     try {
       inputCity ??= await _locationService.getCityName();
+      _inputCity = inputCity;
+
+      // if inputCity is not in SUPPORTED_CITIES, map it to the nearest supported city
+      if (!SUPPORTED_CITIES.map((supportedCity) => supportedCity.city).toList().contains(_inputCity)) {
+        _inputCity = _getNearestSupportedCity().city;
+      }
+
       var jsonList = await _cacheService.getCachedEventsResponse();
-
       if (jsonList == null) {
-        // if inputCity is not in SUPPORTED_CITIES, map it to the nearest supported city
-        if (!SUPPORTED_CITIES.map((supportedCity) => supportedCity.city).toList().contains(inputCity)) {
-          inputCity = _getNearestSupportedCity().city;
-        }
-
         // cache has expired or empty, go fetch from api
-        jsonList = await _apiService.getEvents(inputCity);
+        jsonList = await _apiService.getEvents(_inputCity);
 
         // save in cache
         await _cacheService.saveEventsInCache(jsonList);
@@ -51,7 +56,7 @@ class EventProvider with ChangeNotifier {
 
       print("EventProvider: providing ${_events.events.length} events");
     } catch (error, stackTrace) {
-      print("EventProvider: error=$error inputCity=$inputCity stackTrace=$stackTrace");
+      print("EventProvider: error=$error inputCity=$_inputCity stackTrace=$stackTrace");
       _isError = true;
       _errorMessage = error.toString();
     }

@@ -1,4 +1,3 @@
-import 'package:events_app/event_list_widget.dart';
 import 'package:events_app/providers/event_provider.dart';
 import 'package:events_app/services/location_service.dart';
 import 'package:flutter/material.dart';
@@ -7,15 +6,22 @@ import 'package:flutter/material.dart';
 class CitySelectorWidget extends StatefulWidget {
   final EventProvider provider;
   final Function(String) onChanged;
+  final String inputCity;
 
-  CitySelectorWidget({required this.provider, required this.onChanged});
+  CitySelectorWidget({required this.provider, required this.onChanged, required this.inputCity});
 
   @override
   _CitySelectorWidgetState createState() => _CitySelectorWidgetState();
 }
 
 class _CitySelectorWidgetState extends State<CitySelectorWidget> {
-  String? _selectedCity = DEFAULT_CITY;
+  late String _selectedCity;
+
+  @override
+  void initState() {
+    super.initState();
+    _selectedCity = widget.inputCity;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +46,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
                 if (newValue != null) {
                   widget.onChanged(newValue);
                 }
-                _selectedCity = newValue; // Update selected city
+                _selectedCity = newValue??  widget.inputCity; // Update selected city
               });
 
             },

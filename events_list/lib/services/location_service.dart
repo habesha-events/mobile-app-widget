@@ -11,14 +11,15 @@ import '../models/supported_city.dart';
 
 List<SupportedCity> SUPPORTED_CITIES = [];
 
-String DEFAULT_CITY = 'Seattle';
 
 class LocationService {
+
+  String _DEFAULT_CITY = 'Seattle';
 
   late SupportedCity fetchedLocation; //using model SupportedCity as it fits, but this is not necessarily a supported city
 
   Future<String> getCityName() async {
-    var city = DEFAULT_CITY;
+    var city = _DEFAULT_CITY;
 
     try {
       final loc.Location location = loc.Location();
@@ -33,7 +34,7 @@ class LocationService {
         _serviceEnabled = await location.requestService();
         if (!_serviceEnabled) {
           // return Future.error('Location services are disabled.');
-          return DEFAULT_CITY;
+          return _DEFAULT_CITY;
         }
       }
 
@@ -45,7 +46,7 @@ class LocationService {
         _permissionGranted = await location.requestPermission();
         if (_permissionGranted != loc.PermissionStatus.granted) {
           // return Future.error('Location permissions are denied');
-          return DEFAULT_CITY;
+          return _DEFAULT_CITY;
         }
       }
       print(
