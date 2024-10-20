@@ -44,15 +44,16 @@ class EventProvider with ChangeNotifier {
         _inputCity = _getNearestSupportedCity().city;
       }
 
-      var jsonList = await _cacheService.getCachedEventsResponse();
-      if (jsonList == null) {
+      var eventsJsonList = await _cacheService.getCachedEventsResponse();
+      if (eventsJsonList == null) {
         // cache has expired or empty, go fetch from api
-        jsonList = await _apiService.getEvents(_inputCity);
+        eventsJsonList = await _apiService.getEvents(_inputCity);
 
         // save in cache
-        await _cacheService.saveEventsInCache(jsonList);
+        await _cacheService.saveEventsInCache(eventsJsonList);
       }
-      _events = Events.fromJson(jsonList);
+      // todo sort
+      _events = Events.fromJson(eventsJsonList);
 
       print("EventProvider: providing ${_events.events.length} events");
     } catch (error, stackTrace) {
