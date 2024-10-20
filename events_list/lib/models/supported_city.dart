@@ -19,6 +19,16 @@ class SupportedCity {
       location: json['location'],
     );
   }
+}
 
+class SupportedCities {
+  List<SupportedCity> supportedCities;
 
+  SupportedCities({required this.supportedCities});
+
+  factory SupportedCities.fromJson(List<dynamic> jsonList) {
+    return SupportedCities(
+      supportedCities: jsonList.map((json) => SupportedCity.fromJson(json)).toList(),
+    );
+  }
 }

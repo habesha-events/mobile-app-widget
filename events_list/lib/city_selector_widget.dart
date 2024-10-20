@@ -3,6 +3,16 @@ import 'package:events_app/providers/event_provider.dart';
 import 'package:events_app/services/location_service.dart';
 import 'package:flutter/material.dart';
 
+import 'models/supported_city.dart';
+
+
+// List<String> SUPPORTED_CITIES_DEFAULT = ['Washington, DC',
+//   'Addis Ababa',
+//   'Nairobi', 'Dubai',
+//   'Johannesburg', 'Minneapolis', 'Los Angeles', 'New York City', 'Seattle', 'Dallas', 'Atlanta', 'Denver', 'San Francisco', 'Boston', 'Houston', 'Chicago', 'San Diego', 'Philadelphia', 'Phoenix', 'Portland', 'Austin', 'Miami', 'Detroit', 'Baltimore', 'Toronto', 'Calgary', 'Edmonton', 'Vancouver', 'Montreal', 'Ottawa', 'Winnipeg', 'Hamilton', 'Kitchener', 'London', 'Halifax', 'Victoria', 'Quebec City', 'Surrey', 'Mississauga', 'Burnaby', 'Regina', 'Saskatoon', 'Windsor', 'Oshawa', 'London', 'Frankfurt', 'Stockholm', 'Rome', 'Amsterdam', 'Paris', 'Berlin', 'Oslo', 'Brussels', 'Copenhagen', 'Madrid', 'Vienna', 'Zurich', 'Munich', 'Lisbon', 'Helsinki', 'Dublin', 'Athens', 'Prague', 'Warsaw'];
+
+List<SupportedCity> SUPPORTED_CITIES = [];
+
 class CitySelectorWidget extends StatefulWidget {
   final EventProvider provider;
   final Function(String) onChanged;
@@ -14,7 +24,7 @@ class CitySelectorWidget extends StatefulWidget {
 }
 
 class _CitySelectorWidgetState extends State<CitySelectorWidget> {
-  String? _selectedCity = SUPPORTED_CITIES[0];
+  String? _selectedCity = SUPPORTED_CITIES[0].city;
 
 
   @override
@@ -28,6 +38,7 @@ class _CitySelectorWidgetState extends State<CitySelectorWidget> {
             value: _selectedCity,
             // hint: Text('Select City'), // Initial hint when no city is selected
             items: SUPPORTED_CITIES
+            .map((supportedCity) => supportedCity.city)
                 .map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,

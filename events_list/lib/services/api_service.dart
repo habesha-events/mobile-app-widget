@@ -1,55 +1,54 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:events_app/models/api_response.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:http/http.dart' as http;
-
 import 'location_service.dart';
 
 class ApiService {
   static const String BASE_URL = 'http://18.221.37.124';
   static const String TOKEN = 'yene_secret_qulf_42';
-  static const bool USE_FAKE_DATA = kDebugMode && false;
+  static const bool USE_LOCAL_JSON_API = kDebugMode && false;
 
-  Future<ApiResponse> getEvents(String city) async {
-    print("ApiService: getEvents: useFakeData=$USE_FAKE_DATA, city=${city}");
-    if (USE_FAKE_DATA) {
-      return _loadFakeData();
+  //returns jsonList
+  Future<List<dynamic>> getEvents(String city) async {
+    print("ApiService: getEvents: useFakeData=$USE_LOCAL_JSON_API, city=${city}");
+    if (USE_LOCAL_JSON_API) {
+      return _loadEventsLocalJsonApiResponse();
     } else {
       var response = await _getApiResponse('$BASE_URL/events/get_2?city=$city');
       if (response.statusCode == 200) {
-        List<dynamic> events = [];
+        List<dynamic> jsonList = [];
 
         try{
-          events = jsonDecode(response.body.toString());
+          jsonList = jsonDecode(response.body.toString());
         }catch(e){
           throw Exception('ApiService: getEvents: Failed to load events: parsing error: $e');
         }
 
-        return ApiResponse(events: events,);
+        return jsonList;
       } else {
         throw Exception('ApiService: getEvents: Failed to load events: statusCode: ${response.statusCode}');
       }
     }
   }
 
-
-  Future<List<String>?> getSupportedCitiesFromApi() async {
-    if (USE_FAKE_DATA) {
-      return SUPPORTED_CITIES_DEFAULT;
+  //returns jsonList
+  Future<List<dynamic>?> getSupportedCitiesFromApi() async {
+    if (USE_LOCAL_JSON_API) {
+      return loadSupportedCitiesLocalJsonApiResponse();
     }else{
       var response = await _getApiResponse('$BASE_URL/cities/supported');
       if (response.statusCode == 200) {
-        List<String> supportedCities = [];
+        List<dynamic> jsonList = [];
 
         try{
-          supportedCities = jsonDecode(response.body.toString());
+          jsonList = jsonDecode(response.body.toString());
         }catch(e){
           throw Exception('ApiService: getSupportedCitiesFromApi: parsing error: $e');
         }
 
-        return supportedCities;
+        return jsonList;
       } else {
         print('ApiService: getSupportedCitiesFromApi: Failed to SupportedCities: statusCode: ${response.statusCode}: returning SUPPORTED_CITIES_DEFAULT');
         return null;
@@ -104,10 +103,17 @@ class ApiService {
   }
 
 
-  Future<ApiResponse> _loadFakeData() async {
+  Future<List<dynamic>> _loadEventsLocalJsonApiResponse() async {
     final response = await rootBundle.loadString('assets/events_api_response.json');
-    List<dynamic> json = jsonDecode(response);
-    print("ApiService: loadFakeData $json");
-    return ApiResponse(events: json);
+    List<dynamic> jsonList = jsonDecode(response);
+    print("ApiService: _loadFakeEventsResponse $jsonList");
+    return jsonList;
+  }
+
+  Future<List<dynamic>> loadSupportedCitiesLocalJsonApiResponse() async {
+    final response = await rootBundle.loadString('assets/supported_cities_api_response.json');
+    List<dynamic> jsonList = jsonDecode(response);
+    print("ApiService: _loadFakeSupportedCitiesResponse $json");
+    return jsonList;
   }
 }

@@ -1,6 +1,7 @@
 import 'dart:convert';
-import 'package:events_app/models/api_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../models/event.dart';
 
 class CacheService {
   static const CACHE_PERIOD_MINUTES = 24 * 60; // 24 hrs
@@ -27,14 +28,14 @@ class CacheService {
     prefs.setString(PREF_KEY_SUPPORTED_CITIES, json.encode(cacheData));
   }
 
-  Future<ApiResponse?> getCachedEventsResponse() async {
+  Future<Events?> getCachedEventsResponse() async {
     final cacheString = prefs.getString(PREF_KEY_EVENTS);
     if (cacheString != null) {
       final cacheData = json.decode(cacheString);
       final currentCacheMilliSeconds = DateTime.now().millisecondsSinceEpoch - cacheData['timestamp'];
       if (currentCacheMilliSeconds < CACHE_PERIOD_MINUTES * 60 * 1000) {
         print("CacheService: getCachedEventsResponse: currentCacheSeconds ${currentCacheMilliSeconds/1000}: returning cached data: $cacheData");
-        return ApiResponse(events: cacheData['events']);
+        return Events.fromJson(cacheData['events']);
       }
     }
     print("CacheService: getCachedEventsResponse: returning NULL!");
@@ -42,7 +43,7 @@ class CacheService {
   }
 
 
-  Future<List<String>?> getCachedSupportedCities() async {
+  Future<List<dynamic>?> getCachedSupportedCities() async {
     final cacheString = prefs.getString(PREF_KEY_SUPPORTED_CITIES);
     if (cacheString != null) {
       final cacheData = json.decode(cacheString);

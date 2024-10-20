@@ -1,13 +1,13 @@
-import 'package:events_app/models/api_response.dart';
 import 'package:flutter/material.dart';
 import '../models/event.dart';
+import '../models/supported_city.dart';
 import '../services/api_service.dart';
 import '../services/cache_service.dart';
 import '../services/location_service.dart';
 
 class EventProvider with ChangeNotifier {
-  ApiResponse get localResponse => _localResponse;
-  ApiResponse _localResponse = ApiResponse(events: []);
+  Events get events => _events;
+  Events _events = Events(events: []);
 
   String get inputCity => _inputCity;
   String _inputCity = "";
@@ -36,21 +36,19 @@ class EventProvider with ChangeNotifier {
     try {
       inputCity ??= await _locationService.getCityName();
       _inputCity = inputCity;
-      final cachedEventsResponse = await _cacheService.getCachedEventsResponse();
+      final events = await _cacheService.getCachedEventsResponse();
 
-      if (cachedEventsResponse != null) {
-        _localResponse = ApiResponse(
-            events: cachedEventsResponse.events.map((event) => Event.fromJson(event)).toList(),
-       );
+      if (events != null) {
+        _events = events;
       } else {
         // cache has expired or empty, go fetch from api
-        final apiResponse = await _apiService.getEvents(inputCity);
-        _localResponse = ApiResponse(
-            events: apiResponse.events.map((event) => Event.fromJson(event)).toList(),
-       );
-        await _cacheService.saveEventsInCache(apiResponse.events);
+        var jsonList = await _apiService.getEvents(inputCity);
+        _events = Events.fromJson(jsonList);
+
+        // save in cache
+        await _cacheService.saveEventsInCache(jsonList);
       }
-      print("EventProvider: providing ${_localResponse.events.length} events");
+      print("EventProvider: providing ${_events.events.length} events");
     } catch (error, stackTrace) {
       print("EventProvider: error=$error stackTrace=$stackTrace inputCity=$inputCity");
       _isError = true;
@@ -62,19 +60,17 @@ class EventProvider with ChangeNotifier {
   }
 
 
-  Future<List<String>> getSupportedCities() async {
-    var supportedList = await _cacheService.getCachedSupportedCities();
-    if(supportedList != null){
-      return supportedList;
-    }else{
-      supportedList = await _apiService.getSupportedCitiesFromApi();
-      if(supportedList != null){
-        _cacheService.saveSupportedCitiesCache(supportedList);
-        return supportedList;
+  Future<SupportedCities> getSupportedCities() async {
+    var jsonList = await _cacheService.getCachedSupportedCities();
+    if(jsonList == null){
+      jsonList = await _apiService.getSupportedCitiesFromApi();
+      if(jsonList != null){
+        _cacheService.saveSupportedCitiesCache(jsonList);
       }else{
-        return SUPPORTED_CITIES_DEFAULT;
+        jsonList = await _apiService.loadSupportedCitiesLocalJsonApiResponse();
       }
     }
+    return SupportedCities.fromJson(jsonList);
   }
 
   }

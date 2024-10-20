@@ -10,7 +10,7 @@ import 'providers/event_provider.dart';
 import 'dart:convert';
 
 class EventListWidget extends StatefulWidget {
-  Function(String) onErrorCallback;
+  final Function(String) onErrorCallback;
 
   EventListWidget({
     required this.onErrorCallback,
@@ -31,7 +31,7 @@ class EventListWidgetState extends State<EventListWidget> {
 
     //fetch supported list if not fetched , with .doThen()
     provider.getSupportedCities().then((supportedCities){
-      SUPPORTED_CITIES = supportedCities;
+      SUPPORTED_CITIES = supportedCities.supportedCities;
       _fetchEvents();
     });
   }
@@ -123,10 +123,10 @@ class EventListWidgetState extends State<EventListWidget> {
       thumbVisibility: true,
       // Makes the scrollbar always visible
       child: ListView.builder(
-        itemCount: provider.localResponse.events.length,
+        itemCount: provider.events.events.length,
         controller: _scrollController,
         itemBuilder: (context, index) {
-          final event = provider.localResponse.events[index];
+          final event = provider.events.events[index];
           return _rowWidget(event);
         },
       ));
@@ -209,7 +209,7 @@ class EventListWidgetState extends State<EventListWidget> {
                 _getTitleWidget(event.title ?? 'Event'), // Handle null title
                 const SizedBox(height: 4), // Add small spacing between title and subtitle
                 Text(
-                  ApiService.USE_FAKE_DATA ? subTitleText :  utf8.decode(subTitleText.codeUnits),
+                  ApiService.USE_LOCAL_JSON_API ? subTitleText :  utf8.decode(subTitleText.codeUnits),
                   style: const TextStyle(height: 1.5), // Adjust line height for better spacing
                 ),
               ],

@@ -29,7 +29,7 @@ class Event {
     );
   }
 
-  String? getPriceDisplayText(){
+  String? getPriceDisplayText() {
     return price?.replaceAll("From", "");
   }
 
@@ -37,5 +37,16 @@ class Event {
   String toString() {
     return 'Event{position: $position, imageUrl: $imageUrl, title: $title, startTime: $startTime, price: $price}';
   }
+}
 
+class Events {
+  List<Event> events;
+
+  Events({required this.events});
+
+  factory Events.fromJson(List<dynamic> jsonList) {
+    return Events(
+      events: jsonList.map((json) => Event.fromJson(json)).toList(),
+    );
+  }
 }
