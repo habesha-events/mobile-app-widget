@@ -8,7 +8,7 @@ class ApiService {
   static const String BASE_URL = 'http://18.221.37.124';
   static const String TOKEN = 'yene_secret_qulf_42';
   static const bool USE_LOCAL_JSON_API_FOR_EVENTS = kDebugMode && false;
-  static const bool USE_LOCAL_JSON_API_FOR_SUPPORTED_CITIES = true;
+  static const bool USE_LOCAL_JSON_API_FOR_SUPPORTED_CITIES = kDebugMode && false;
 
   //returns jsonList
   Future<List<dynamic>> getEvents(String city) async {
