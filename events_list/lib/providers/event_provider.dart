@@ -92,8 +92,8 @@ class EventProvider with ChangeNotifier {
     var inputLocation = _locationService.fetchedLocation;
     for (SupportedCity supportedCity in SUPPORTED_CITIES) {
       double distance = _calculateDistance(
-        inputLocation.location.latitude, inputLocation.location.longitude,
-        supportedCity.location.latitude, supportedCity.location.longitude,
+        inputLocation.latitude, inputLocation.longitude,
+        supportedCity.latitude, supportedCity.longitude,
       );
 
       if (distance < minDistance) {
@@ -135,12 +135,13 @@ class EventProvider with ChangeNotifier {
       // Find the matching supported city for the event's city
       final matchingSupportedCity = SUPPORTED_CITIES.firstWhere(
             (supportedCity) => supportedCity.city == event.city,
-        orElse: () => SupportedCity(city: '', country: '', location: Location(latitude: 0, longitude: 0, timestamp:  DateTime.now())),
+        orElse: () => SupportedCity(city: '', country: '', latitude: 0, longitude: 0),
       );
 
       // Populate the location if a matching city is found
       if (matchingSupportedCity.city.isNotEmpty) {
-        event.location = matchingSupportedCity.location;
+        event.latitude = matchingSupportedCity.latitude;
+        event.longitude = matchingSupportedCity.longitude;
         populatedEvents.add(event);
       }
     }
@@ -151,18 +152,19 @@ class EventProvider with ChangeNotifier {
     _sortEventsByDistance() {
       final inputSupportedCity = SUPPORTED_CITIES.firstWhere(
             (supportedCity) => supportedCity.city == _inputCity,
-        orElse: () => SupportedCity(city: '', country: '', location: Location(latitude: 0, longitude: 0, timestamp:  DateTime.now())),
+        orElse: () => SupportedCity(city: '', country: '', latitude: 0, longitude: 0),
       );
-      Location inputLocation = inputSupportedCity.location;
+      var latitude = inputSupportedCity.latitude;
+      var longitude = inputSupportedCity.longitude;
 
     // Sort the events list by distance to the input location
     _events.events.sort((event1, event2) {
 
       // Calculate distances
-      double distance1 = _calculateDistance(inputLocation.latitude, inputLocation.longitude,
-          event1.location!.latitude, event1.location!.longitude);
-      double distance2 = _calculateDistance(inputLocation.latitude, inputLocation.longitude,
-          event2.location!.latitude, event2.location!.longitude);
+      double distance1 = _calculateDistance(latitude, longitude,
+          event1.latitude, event1.longitude);
+      double distance2 = _calculateDistance(latitude, longitude,
+          event2.latitude, event2.longitude);
 
       // Sort by distance (ascending)
       return distance1.compareTo(distance2);

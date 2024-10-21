@@ -1,52 +1,218 @@
 [
   {
     "city": "Washington, DC",
-    "country": "USA",
-    "location": "38.8951, -77.0364"
-  },
-  {
-    "city": "Addis Ababa",
-    "country": "Ethiopia",
-    "location": "9.0054, 38.7636"
-  },
-  {
-    "city": "Nairobi",
-    "country": "Kenya",
-    "location": "-1.2921, 36.8219"
-  },
-  {
-    "city": "Dubai",
-    "country": "UAE",
-    "location": "25.276987, 55.296249"
-  },
-  {
-    "city": "Johannesburg",
-    "country": "South Africa",
-    "location": "-26.2041, 28.0473"
-  },
-  {
-    "city": "Minneapolis",
-    "country": "USA",
-    "location": "44.9778, -93.2650"
-  },
-  {
-    "city": "Los Angeles",
-    "country": "USA",
-    "location": "34.0522, -118.2437"
-  },
-  {
-    "city": "New York City",
-    "country": "USA",
-    "location": "40.7128, -74.0060"
+    "country": "United States",
+    "latitude": 38.9047,
+    "longitude": -77.0163
   },
   {
     "city": "Seattle",
-    "country": "USA",
-    "location": "47.6062, -122.3321"
+    "country": "United States",
+    "latitude": 47.6211,
+    "longitude": -122.3244
+  },
+  {
+    "city": "Los Angeles",
+    "country": "United States",
+    "latitude": 34.0326,
+    "longitude": -118.1691
+  },
+  {
+    "city": "New York City",
+    "country": "United States",
+    "latitude": 40.7128,
+    "longitude": -74.006
   },
   {
     "city": "Dallas",
-    "country": "USA",
-    "location": "32.7767, -96.7970"
+    "country": "United States",
+    "latitude": 32.7767,
+    "longitude": -96.797
+  },
+  {
+    "city": "Atlanta",
+    "country": "United States",
+    "latitude": 33.1136,
+    "longitude": -94.1672
+  },
+  {
+    "city": "Denver",
+    "country": "United States",
+    "latitude": 39.7621,
+    "longitude": -104.8759
+  },
+  {
+    "city": "San Francisco",
+    "country": "United States",
+    "latitude": 37.7562,
+    "longitude": -122.443
+  },
+  {
+    "city": "Houston",
+    "country": "United States",
+    "latitude": 29.7863,
+    "longitude": -95.3889
+  },
+  {
+    "city": "Chicago",
+    "country": "United States",
+    "latitude": 41.8373,
+    "longitude": -87.6862
+  },
+  {
+    "city": "San Diego",
+    "country": "United States",
+    "latitude": 32.8312,
+    "longitude": -117.1225
+  },
+  {
+    "city": "Philadelphia",
+    "country": "United States",
+    "latitude": 32.7761,
+    "longitude": -89.1221
+  },
+  {
+    "city": "Phoenix",
+    "country": "United States",
+    "latitude": 33.5722,
+    "longitude": -112.0891
+  },
+  {
+    "city": "Portland",
+    "country": "United States",
+    "latitude": 45.5372,
+    "longitude": -122.65
+  },
+  {
+    "city": "Austin",
+    "country": "United States",
+    "latitude": 30.3004,
+    "longitude": -97.7522
+  },
+  {
+    "city": "Miami",
+    "country": "United States",
+    "latitude": 25.7839,
+    "longitude": -80.2102
+  },
+  {
+    "city": "Detroit",
+    "country": "United States",
+    "latitude": 42.3834,
+    "longitude": -83.1024
+  },
+  {
+    "city": "Baltimore",
+    "country": "United States",
+    "latitude": 39.3051,
+    "longitude": -76.6144
+  },
+  {
+    "city": "Toronto",
+    "country": "Canada",
+    "latitude": 43.7417,
+    "longitude": -79.3733
+  },
+  {
+    "city": "Calgary",
+    "country": "Canada",
+    "latitude": 51.05,
+    "longitude": -114.0667
+  },
+  {
+    "city": "Edmonton",
+    "country": "Canada",
+    "latitude": 53.5344,
+    "longitude": -113.4903
+  },
+  {
+    "city": "Vancouver",
+    "country": "Canada",
+    "latitude": 49.25,
+    "longitude": -123.1
+  },
+  {
+    "city": "Ottawa",
+    "country": "Canada",
+    "latitude": 45.4247,
+    "longitude": -75.695
+  },
+  {
+    "city": "Winnipeg",
+    "country": "Canada",
+    "latitude": 49.8844,
+    "longitude": -97.1464
+  },
+  {
+    "city": "Hamilton",
+    "country": "Canada",
+    "latitude": 43.2567,
+    "longitude": -79.8692
+  },
+  {
+    "city": "Kitchener",
+    "country": "Canada",
+    "latitude": 43.4186,
+    "longitude": -80.4728
+  },
+  {
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5074,
+    "longitude": -0.1278
+  },
+  {
+    "city": "Halifax",
+    "country": "United Kingdom",
+    "latitude": 53.725,
+    "longitude": -1.863
+  },
+  {
+    "city": "Victoria",
+    "country": "Canada",
+    "latitude": 48.4283,
+    "longitude": -123.3647
+  },
+  {
+    "city": "Quebec City",
+    "country": "Canada",
+    "latitude": 46.8139,
+    "longitude": -71.2081
+  },
+  {
+    "city": "Surrey",
+    "country": "Canada",
+    "latitude": 49.19,
+    "longitude": -122.8489
+  },
+  {
+    "city": "Mississauga",
+    "country": "Canada",
+    "latitude": 43.6,
+    "longitude": -79.65
+  },
+  {
+    "city": "Burnaby",
+    "country": "Canada",
+    "latitude": 49.2667,
+    "longitude": -122.9667
+  },
+  {
+    "city": "Regina",
+    "country": "Canada",
+    "latitude": 50.4547,
+    "longitude": -104.6067
+  },
+  {
+    "city": "Saskatoon",
+    "country": "Canada",
+    "latitude": 52.1333,
+    "longitude": -106.6833
+  },
+  {
+    "city": "Windsor",
+    "country": "Canada",
+    "latitude": 42.3149,
+    "longitude": -83.0364
   }
 ]

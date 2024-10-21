@@ -9,7 +9,8 @@ class Event {
   final String? eventUrl;
   final String? price;
   final String? city;
-  Location? location; // "lat, long"
+   double latitude;
+   double longitude;
 
   Event({
     required this.position,
@@ -19,7 +20,8 @@ class Event {
     required this.eventUrl,
     required this.price,
     required this.city,
-    required this.location,
+    required this.latitude,
+    required this.longitude,
   });
 
   factory Event.fromJson(Map<String, dynamic> json) {
@@ -31,7 +33,8 @@ class Event {
       eventUrl: json['event_url'],
       price: json['price'],
       city: json['city'],
-      location:  Location(latitude: 0, longitude: 0, timestamp:  DateTime.now())
+      latitude: 0,
+      longitude: 0,
     );
   }
 

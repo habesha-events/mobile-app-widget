@@ -61,7 +61,8 @@ class LocationService {
             _locationData.latitude!, _locationData.longitude!);
         city = placemarks.first.locality ?? 'Unknown';
         fetchedLocation = SupportedCity(city: city, country: placemarks.first.country??'',
-            location: Location(latitude: _locationData.latitude!, longitude:_locationData.longitude!, timestamp: DateTime.now() ));
+            latitude:  _locationData.latitude!, longitude:  _locationData.longitude!
+           );
       } catch (e) {
         print("LocationService: PlaceMark Error: ${e}");
       }

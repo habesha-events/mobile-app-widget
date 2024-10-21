@@ -4,33 +4,23 @@ import 'package:geocoding/geocoding.dart';
 class SupportedCity {
   final String city;
   final String country;
-  final Location location; // "lat, long"
+  final double latitude;
+  final double longitude;
 
   SupportedCity({
     required this.city,
     required this.country,
-    required this.location,
+    required this.latitude,
+    required this.longitude,
   });
 
   factory SupportedCity.fromJson(Map<String, dynamic> json) {
     return SupportedCity(
       city: json['city'],
       country: json['country'],
-      location: parseLocationFromString(json['location']),
+      latitude: json['latitude'],
+      longitude: json['longitude'] ,
     );
-  }
-
-
- static Location parseLocationFromString(String locationString) {
-    // Split the string by comma and trim whitespace
-    final parts = locationString.split(',').map((part) => part.trim()).toList();
-
-    // Extract latitude and longitude
-    final latitude = double.parse(parts[0]);
-    final longitude = double.parse(parts[1]);
-
-    // Create a Location object
-    return Location(latitude: latitude, longitude: longitude, timestamp: DateTime.now());
   }
 
 }
