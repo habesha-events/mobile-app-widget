@@ -171,4 +171,12 @@ class EventProvider with ChangeNotifier {
     });
 
   }
+
+  //debug method to print large string
+  void _printLargeString(String text) {
+    const int chunkSize = 800; // The max size per print call
+    for (int i = 0; i < text.length; i += chunkSize) {
+      print(text.substring(i, i + chunkSize > text.length ? text.length : i + chunkSize));
+    }
+  }
 }

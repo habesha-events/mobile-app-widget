@@ -214,5 +214,71 @@
     "country": "Canada",
     "latitude": 42.3149,
     "longitude": -83.0364
+  },
+  {
+    "city": "Oshawa",
+    "country": "Canada",
+    "latitude": 43.9,
+    "longitude": -78.85
+  },
+  {
+    "city": "Frankfurt",
+    "country": "Germany",
+    "latitude": 50.1136,
+    "longitude": 8.6797
+  },
+  {
+    "city": "Stockholm",
+    "country": "Sweden",
+    "latitude": 59.3294,
+    "longitude": 18.0686
+  },
+  {
+    "city": "Berlin",
+    "country": "Germany",
+    "latitude": 52.5167,
+    "longitude": 13.3833
+  },
+  {
+    "city": "Oslo",
+    "country": "Norway",
+    "latitude": 59.9111,
+    "longitude": 10.7528
+  },
+  {
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.1375,
+    "longitude": 11.575
+  },
+  {
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.1756,
+    "longitude": 24.9342
+  },
+  {
+    "city": "Addis Ababa",
+    "country": "Ethiopia",
+    "latitude": 9.0272,
+    "longitude": 38.7369
+  },
+  {
+    "city": "Nairobi",
+    "country": "Kenya",
+    "latitude": -1.2864,
+    "longitude": 36.8172
+  },
+  {
+    "city": "Johannesburg",
+    "country": "South Africa",
+    "latitude": -26.2044,
+    "longitude": 28.0416
+  },
+  {
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "latitude": 25.2697,
+    "longitude": 55.3094
   }
 ]
